@@ -11,11 +11,15 @@ import UIKit
 class PlaySoundsViewController: UIViewController {
 
     var recordedAudioURL: URL!
+    
+    @IBOutlet weak var slowButton: UIButton!
+    @IBOutlet weak var fastButton: UIButton!
+    @IBOutlet weak var lowPitchButton: UIButton!
+    @IBOutlet weak var highPitchButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("RECORDED AUDIO URL")
-        print(recordedAudioURL)
+        print("RECORDED AUDIO URL: \(recordedAudioURL)")
 
         // Do any additional setup after loading the view.
     }
