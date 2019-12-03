@@ -20,9 +20,7 @@ class RecordSoundsViewController: UIViewController {
     var audioRecorder: AVAudioRecorder!
 
     @IBAction func onRecordPressed(_ sender: Any) {
-        tapToRecordLabel.text = "Recording..."
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
+        toggleRecordButtonState(isRecording: true)
 
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -40,9 +38,7 @@ class RecordSoundsViewController: UIViewController {
     }
 
     @IBAction func onStopRecordingPressed(_ sender: Any) {
-        tapToRecordLabel.text = "Tap to Record"
-        stopRecordingButton.isEnabled = false
-        recordButton.isEnabled = true
+        toggleRecordButtonState(isRecording: false)
 
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
@@ -60,6 +56,18 @@ class RecordSoundsViewController: UIViewController {
             playSoundsVC.recordedAudioURL = sender as? URL
         }
     }
+
+    private func toggleRecordButtonState(isRecording: Bool) {
+        if isRecording {
+            tapToRecordLabel.text = "Recording..."
+            stopRecordingButton.isEnabled = true
+            recordButton.isEnabled = false
+        } else {
+            tapToRecordLabel.text = "Tap to Record"
+            stopRecordingButton.isEnabled = false
+            recordButton.isEnabled = true
+        }
+    }
 }
 
 extension RecordSoundsViewController: AVAudioRecorderDelegate {
@@ -67,7 +75,7 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
         if flag {
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
-            print("problem saving audio recording")
+            Alerts.showAlert(AlertType.AudioEngineError, message: String(describing: "Problem saving audio"), sender: self)
         }
     }
 }

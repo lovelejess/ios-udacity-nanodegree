@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E25C522239602DC0014DD29 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25C521239602DC0014DD29 /* Alerts.swift */; };
 		2E28C83323937559001582C3 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28C83223937559001582C3 /* PlaySoundsViewController.swift */; };
 		2E28C8352394C30B001582C3 /* PlaySoundsViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E28C8342394C30B001582C3 /* PlaySoundsViewController+Audio.swift */; };
 		2EE89E63238CC4D1003CEEA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE89E62238CC4D1003CEEA3 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E25C521239602DC0014DD29 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		2E28C83223937559001582C3 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		2E28C8342394C30B001582C3 /* PlaySoundsViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaySoundsViewController+Audio.swift"; sourceTree = "<group>"; };
 		2EE89E5F238CC4D1003CEEA3 /* PitchPerfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitchPerfect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 				2EE89E6B238CC4D1003CEEA3 /* PitchPerfect.xcdatamodeld */,
 				2E28C83223937559001582C3 /* PlaySoundsViewController.swift */,
 				2E28C8342394C30B001582C3 /* PlaySoundsViewController+Audio.swift */,
+				2E25C521239602DC0014DD29 /* Alerts.swift */,
 			);
 			path = PitchPerfect;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				2EE89E63238CC4D1003CEEA3 /* AppDelegate.swift in Sources */,
 				2EE89E6D238CC4D1003CEEA3 /* PitchPerfect.xcdatamodeld in Sources */,
 				2E28C83323937559001582C3 /* PlaySoundsViewController.swift in Sources */,
+				2E25C522239602DC0014DD29 /* Alerts.swift in Sources */,
 				2EE89E65238CC4D1003CEEA3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
