@@ -1,5 +1,6 @@
 #  ClickCounter - iOS Udacity App
 
+The lesson was geared towards building via storyboards, but I since building views programmatically is a skill I'm trying to learn, I replicated the UI via code. It uses stack views and sets constraints programmatically! 
 
 ## Getting Started
 
