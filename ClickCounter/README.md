@@ -22,7 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Demo
 
-![click counter demo](click-counter-demo.gif "Click Counter Demo")
+![click counter demo](click-counter-demo.gif)
 
 ## Authors
 

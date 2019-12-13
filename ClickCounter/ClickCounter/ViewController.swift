@@ -71,12 +71,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        view.addSubview(counterLabel)
-        view.addSubview(duplicateCounterLabel)
-        view.addSubview(incrementButton)
-        view.addSubview(decrementButton)
-        view.addSubview(backgroundButton)
-
         let horizontalButtonStack = createStackView()
         horizontalButtonStack.axis = .horizontal
         horizontalButtonStack.addArrangedSubview(incrementButton)
@@ -102,21 +96,23 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             verticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            verticalStack.heightAnchor.constraint(equalToConstant: 200),
+            verticalStack.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
+
     @objc func incrementCount() {
         count+=1
         counterLabel.text = "\(count)"
         duplicateCounterLabel.text = "\(count)"
     }
-    
+
     @objc func decrementCount() {
         count-=1
         counterLabel.text = "\(count)"
         duplicateCounterLabel.text = "\(count)"
     }
-    
+
     @objc func changeBackgroundColor() {
         let colors: [UIColor] = [.blue, .green, .brown, .purple, .white, .cyan, .gray, .red, .orange, .yellow]
         view.backgroundColor = colors.randomElement()!

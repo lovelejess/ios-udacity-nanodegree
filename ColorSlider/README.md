@@ -1,4 +1,6 @@
-# Pitch Perfect - iOS Udacity App
+# Color Slider - iOS Udacity App
+
+Reimplements the Color Maker app using UISlider controls instead of switches. With sliders you get a slightly more sophisticated palette; you can create millions of colors. Instead of using storyboards, this app creates all the views, layout constraints, such as stackviews, programmatically.
 
 
 ## Getting Started
@@ -18,12 +20,12 @@ Pitch Perfect is iPhone app that will allow users to record their voice and will
 
 ### Installing
 
-1. Open PitchPerfect.xcodeproj
+1. Open ColorSlider.xcodeproj
 1. Choose a simulator that is supported for the versions listed above and run the app!
 
 ### Demo
 
-![pitch perfect demo](pitch-perfect-demo.gif)
+![color slider demo](color-slider-demo.gif)
 
 ## Authors
 
