@@ -96,8 +96,6 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             verticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            verticalStack.heightAnchor.constraint(equalToConstant: 200),
-            verticalStack.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
