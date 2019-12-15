@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 #### Versions
 
-* **Swift Version**: 5.0
+* **Swift Version**: 5.1
 * **XCode Version**: 11.1
 * **iOS Version**: 13
 

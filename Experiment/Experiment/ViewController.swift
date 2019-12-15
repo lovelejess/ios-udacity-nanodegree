@@ -37,7 +37,16 @@ class ViewController: UIViewController {
 
     @objc func experiment() {
         let imagePickerController = UIImagePickerController()
-        present(imagePickerController, animated: true, completion: nil)
+//        present(imagePickerController, animated: true, completion: nil)
+
+        let alertViewController = UIAlertController()
+        let action = UIAlertAction(title: "ok", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alertViewController.title = "Test Alert"
+        alertViewController.message = "Test Alert Message"
+        alertViewController.addAction(action)
+        present(alertViewController, animated: true, completion: nil)
         
     }
 
