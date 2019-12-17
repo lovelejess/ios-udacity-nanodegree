@@ -14,13 +14,84 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="f16-x1-cHx">
+                                <rect key="frame" x="79.5" y="420.5" width="255" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRQ-rh-95t" userLabel="rockButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="65"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="rock"/>
+                                        <state key="normal" image="rock"/>
+                                        <connections>
+                                            <action selector="roshamboSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0e-Yd-Hae"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPV-JF-1qS" userLabel="paperButton">
+                                        <rect key="frame" x="90" y="0.0" width="75" height="65"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="paper"/>
+                                        <state key="normal" image="paper"/>
+                                        <connections>
+                                            <action selector="roshamboSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pf9-hV-bDU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-0a-dN5" userLabel="sicssorsButton">
+                                        <rect key="frame" x="180" y="0.0" width="75" height="65"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="scissors"/>
+                                        <state key="normal" image="scissors"/>
+                                        <connections>
+                                            <action selector="roshamboSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R9I-Bs-jOh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Rock, Paper, or Scissors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHQ-pj-XMg">
+                                <rect key="frame" x="83.5" y="380" width="247.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="f16-x1-cHx" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="EYZ-ST-elZ"/>
+                            <constraint firstItem="f16-x1-cHx" firstAttribute="top" secondItem="vHQ-pj-XMg" secondAttribute="bottom" constant="20" id="ov4-UY-C4u"/>
+                            <constraint firstItem="f16-x1-cHx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xc8-TI-Rd1"/>
+                            <constraint firstItem="vHQ-pj-XMg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yhu-Am-Hnh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="paperButton" destination="YPV-JF-1qS" id="Oef-gr-Lqq"/>
+                        <outlet property="rockButton" destination="gRQ-rh-95t" id="VhF-SR-IbB"/>
+                        <outlet property="scissorsButton" destination="aW6-0a-dN5" id="3Hc-CW-fAL"/>
+                        <outlet property="titleLabel" destination="vHQ-pj-XMg" id="oWZ-yt-YeT"/>
+                        <segue destination="ALA-07-RrQ" kind="show" identifier="showResultsView" id="IKJ-YO-1O7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="131"/>
+            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="5VX-Lb-is6">
+            <objects>
+                <viewController id="ALA-07-RrQ" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="idn-Fp-Pls">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="CXe-Bh-0Rn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kga-GD-sYh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plx-vr-AuE" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1203" y="131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="paper" width="75" height="65"/>
+        <image name="rock" width="75" height="65"/>
+        <image name="scissors" width="75" height="65"/>
+    </resources>
 </document>

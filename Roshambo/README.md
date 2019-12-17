@@ -23,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Demo
 
-![roshambo-demo](roshambo-demo.gif)
+![roshambo-storyboard-demo](roshambo-storyboard-demo.gif)
 
 ## Authors
 

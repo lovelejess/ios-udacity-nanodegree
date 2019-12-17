@@ -10,79 +10,43 @@ import UIKit
 
 class RoshamboViewController: UIViewController {
 
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.red
-        label.text = "Choose Rock, Paper, or Scissors"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    @IBOutlet weak var titleLabel: UILabel!
 
-    lazy var rockButton: UIButton = {
-        let button = UIButton()
-        button.accessibilityIdentifier = "rock"
-        button.setImage(UIImage(named: "rock"), for: .normal)
-        button.addTarget(self, action: #selector(roshamboSelected), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    @IBOutlet weak var rockButton: UIButton!
 
-    lazy var paperButton: UIButton = {
-        let button = UIButton()
-        button.accessibilityIdentifier = "paper"
-        button.setImage(UIImage(named: "paper"), for: .normal)
-        button.addTarget(self, action: #selector(roshamboSelected), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    @IBOutlet weak var paperButton: UIButton!
 
-    lazy var scissorsButton: UIButton = {
-        let button = UIButton()
-        button.accessibilityIdentifier = "scissors"
-        button.setImage(UIImage(named: "scissors"), for: .normal)
-        button.addTarget(self, action: #selector(roshamboSelected), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    @IBOutlet weak var scissorsButton: UIButton!
+
+    var selectedType: RoshamboType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let horizontalStackView = createHorizontalStackView()
-        horizontalStackView.addArrangedSubview(rockButton)
-        horizontalStackView.addArrangedSubview(paperButton)
-        horizontalStackView.addArrangedSubview(scissorsButton)
-
-        view.addSubview(horizontalStackView)
-        view.addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: horizontalStackView.topAnchor, constant: -20),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            horizontalStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            horizontalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
     }
 
-    @objc func roshamboSelected(_ sender: UIButton) {
+    @IBAction func roshamboSelected(_ sender: UIButton) {
         let imageName = sender.accessibilityIdentifier
         if let selectedType = getRoshamboType(for: imageName!) {
-            let resultsViewController = ResultsViewController()
-            resultsViewController.userSelectedType = selectedType
-            present(resultsViewController, animated: true, completion: nil)
+            self.selectedType = selectedType
+            performSegue(withIdentifier: "showResultsView", sender: self)
+        } else {
+            print("error! Unable to show results!")
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showResultsView" {
+            if let resultsViewController = segue.destination as? ResultsViewController {
+                resultsViewController.userSelectedType = selectedType
+            }
+            else{
+                print("error! Unable to load results!")
+            }
         }
     }
 
     func getRoshamboType(for type: String) -> RoshamboType? {
         return RoshamboType(rawValue: type)
-    }
-
-    func createHorizontalStackView() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .leading
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
     }
 }
 
