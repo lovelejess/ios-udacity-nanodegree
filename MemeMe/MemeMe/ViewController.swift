@@ -16,6 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var topTextField: MemeTextField!
     @IBOutlet weak var bottomTextField: MemeTextField!
 
+    @IBAction func shareButton(_ sender: Any) {
+
+    }
+
+    @IBAction func cancelButton(_ sender: Any) {
+        memeImage.image = nil
+        memeImage.contentMode = .scaleToFill
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
+    }
+
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -27,12 +38,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         topTextField.delegate = self
         bottomTextField.delegate = self
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        topTextField.attributedText = NSAttributedString(string: "TOP")
-        bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
+
     }
 
     @IBAction func selectFromLibrary() {
@@ -55,6 +67,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if let image = info[.originalImage] as? UIImage {
             memeImage.image = image
             memeImage.contentMode = .scaleToFill
+            topTextField.isHidden = false
+            bottomTextField.isHidden = false
+            topTextField.attributedText = NSAttributedString(string: "TOP")
+            bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
         }
         dismiss(animated: true, completion: nil)
     }
