@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topTextField.delegate = self
+        topTextField.autocapitalizationType = .allCharacters
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,24 +63,32 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 extension ViewController {
+    /**
+        Sets the styles for UITextField
+     */
     func applyMemeStyles(textField: UITextField) -> NSAttributedString {
         textField.borderStyle = .none
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         let strokeTextAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.strokeColor : UIColor.black,
-            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
             NSAttributedString.Key.strokeWidth : -4.0,
-            NSAttributedString.Key.font : UIFont(name: "Helvetica", size: 52)!,
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font : UIFont(name: "Futura-Bold", size: 48)!,
             NSAttributedString.Key.paragraphStyle : paragraphStyle
         ]
+
+        textField.typingAttributes = strokeTextAttributes
+        textField.defaultTextAttributes = strokeTextAttributes
         return NSAttributedString(string: "TOP", attributes: strokeTextAttributes)
     }
 }
 
 extension ViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+
 }
