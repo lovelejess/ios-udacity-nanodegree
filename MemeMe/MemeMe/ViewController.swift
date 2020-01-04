@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var photoAlbumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var memeImage: UIImageView!
-    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var topTextField: MemeTextField!
+    @IBOutlet weak var bottomTextField: MemeTextField!
 
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -25,12 +26,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topTextField.delegate = self
-        topTextField.autocapitalizationType = .allCharacters
+        bottomTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        topTextField.attributedText = applyMemeStyles(textField: topTextField)
+        topTextField.attributedText = NSAttributedString(string: "TOP")
+        bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
     }
 
     @IBAction func selectFromLibrary() {
@@ -59,28 +61,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-extension ViewController {
-    /**
-        Sets the styles for UITextField
-     */
-    func applyMemeStyles(textField: UITextField) -> NSAttributedString {
-        textField.borderStyle = .none
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.center
-        let strokeTextAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.strokeWidth : -4.0,
-            NSAttributedString.Key.strokeColor : UIColor.black,
-            NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.font : UIFont(name: "Futura-Bold", size: 48)!,
-            NSAttributedString.Key.paragraphStyle : paragraphStyle
-        ]
-
-        textField.typingAttributes = strokeTextAttributes
-        textField.defaultTextAttributes = strokeTextAttributes
-        return NSAttributedString(string: "TOP", attributes: strokeTextAttributes)
     }
 }
 
