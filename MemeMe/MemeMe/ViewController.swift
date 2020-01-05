@@ -39,8 +39,14 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        subscribeToKeyboardNotifications()
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unsubscribeToKeyboardNotifications()
     }
 
     @IBAction func selectFromLibrary() {
@@ -55,6 +61,34 @@ class ViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+// MARK: Private Methods stored in the extension below
+extension ViewController {
+
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0
     }
 }
 
@@ -83,4 +117,11 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
 
+}
+
+public struct Meme {
+    var topLabel: String
+    var bottomLabel: String
+    var image: UIImage
+    var memeMe: UIImage
 }

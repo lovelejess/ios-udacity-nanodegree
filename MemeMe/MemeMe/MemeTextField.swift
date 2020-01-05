@@ -37,7 +37,7 @@ import UIKit
             NSAttributedString.Key.strokeWidth : -4.0,
             NSAttributedString.Key.strokeColor : UIColor.black,
             NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.font : UIFont(name: "Futura-Bold", size: 48)!,
+            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSAttributedString.Key.paragraphStyle : paragraphStyle
         ]
         return strokeTextAttributes
