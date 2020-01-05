@@ -17,7 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomTextField: MemeTextField!
 
     @IBAction func shareButton(_ sender: Any) {
-
+        if let image = memeImage.image {
+            let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+            present(vc, animated: true)
+        }
     }
 
     @IBAction func cancelButton(_ sender: Any) {
@@ -26,13 +29,6 @@ class ViewController: UIViewController {
         topTextField.isHidden = true
         bottomTextField.isHidden = true
     }
-
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
