@@ -45,13 +45,13 @@
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="vcs-MJ-jYm" userLabel="Share Button">
                                         <connections>
-                                            <action selector="shareButton:" destination="BYZ-38-t0r" id="ZZH-Up-jXJ"/>
+                                            <action selector="onShareButtonPressed:" destination="BYZ-38-t0r" id="ZZH-Up-jXJ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9yq-zc-5GB"/>
                                     <barButtonItem title="Cancel" id="H8A-jM-Ab0">
                                         <connections>
-                                            <action selector="cancelButton:" destination="BYZ-38-t0r" id="Y1z-Mx-ScS"/>
+                                            <action selector="onCancelButtonPressed:" destination="BYZ-38-t0r" id="Y1z-Mx-ScS"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -85,10 +85,13 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="wva-4N-cxL" id="dy6-UK-hhM"/>
+                        <outlet property="bottomToolbar" destination="WDc-23-3O4" id="WEo-C5-F1N"/>
                         <outlet property="cameraButton" destination="5NS-dD-XBi" id="r24-wu-Cxa"/>
                         <outlet property="memeImage" destination="IMj-M2-7q8" id="tDf-jG-Xj6"/>
                         <outlet property="photoAlbumButton" destination="AVk-jA-mDp" id="Jgx-J9-VHZ"/>
+                        <outlet property="shareButton" destination="vcs-MJ-jYm" id="Bd6-J2-VXe"/>
                         <outlet property="topTextField" destination="U3y-fi-DHW" id="K1k-2Q-mXe"/>
+                        <outlet property="topToolbar" destination="9pW-h9-pZE" id="WCE-db-NfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

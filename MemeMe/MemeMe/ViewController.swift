@@ -15,38 +15,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var topTextField: MemeTextField!
     @IBOutlet weak var bottomTextField: MemeTextField!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
 
-    @IBAction func shareButton(_ sender: Any) {
-        if let image = memeImage.image {
-            let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
-            present(vc, animated: true)
+    @IBAction func onShareButtonPressed(_ sender: Any) {
+        let image = generateMemedImage()
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        vc.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed:
+        Bool, arrayReturnedItems: [Any]?, error: Error?) in
+            if completed {
+                self.save(generatedImage: image)
+                return
+            }
+            if let shareError = error {
+                let errorMessage = "Error while sharing: \(shareError.localizedDescription)"
+                let alertView = UIAlertController(title: "Error!", message: errorMessage, preferredStyle: .alert)
+                self.present(alertView, animated: true)
+            }
         }
-    }
-
-    @IBAction func cancelButton(_ sender: Any) {
-        memeImage.image = nil
-        memeImage.contentMode = .scaleToFill
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        subscribeToKeyboardNotifications()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        unsubscribeToKeyboardNotifications()
+        present(vc, animated: true)
     }
 
     @IBAction func selectFromLibrary() {
@@ -62,11 +50,36 @@ class ViewController: UIViewController {
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
+
+    @IBAction func onCancelButtonPressed(_ sender: Any) {
+        memeImage.image = nil
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
+        shareButton.isEnabled = false
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = false
+        subscribeToKeyboardNotifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        unsubscribeToKeyboardNotifications()
+    }
 }
 
-// MARK: Private Methods stored in the extension below
 extension ViewController {
-
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
@@ -84,13 +97,42 @@ extension ViewController {
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if (bottomTextField.isFirstResponder) {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
+        if (bottomTextField.isFirstResponder) {
+            view.frame.origin.y = 0
+        }
+    }
+
+    func save(generatedImage: UIImage) {
+        guard let topText = topTextField.text else { return }
+        guard let bottomText = bottomTextField.text else { return }
+        guard let image = memeImage.image else { return }
+        // TODO: What am I supposed to do with this??
+        let _ = Meme(topText: topText, bottomText: bottomText, originalImage: image, memedImage: generatedImage)
+    }
+
+    func generateMemedImage() -> UIImage {
+        // Remove Toolbars from view to avoid saving in MemedImage
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        // Render view to an image
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let generatedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        // Add Toolbars back
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
+        return generatedImage
     }
 }
+
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -99,6 +141,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             memeImage.contentMode = .scaleToFill
             topTextField.isHidden = false
             bottomTextField.isHidden = false
+            shareButton.isEnabled = true
             topTextField.attributedText = NSAttributedString(string: "TOP")
             bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
         }
@@ -111,7 +154,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 extension ViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -120,8 +162,8 @@ extension ViewController: UITextFieldDelegate {
 }
 
 public struct Meme {
-    var topLabel: String
-    var bottomLabel: String
-    var image: UIImage
-    var memeMe: UIImage
+    var topText: String
+    var bottomText: String
+    var originalImage: UIImage
+    var memedImage: UIImage
 }
