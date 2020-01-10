@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EB35D5823C92AE400CBD3A7 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB35D5723C92AE400CBD3A7 /* Meme.swift */; };
 		2EE9C8A523C04313003E7477 /* MemeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE9C8A423C04313003E7477 /* MemeTextField.swift */; };
 		2EFE0E4423B5746900CF3DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE0E4323B5746900CF3DCF /* AppDelegate.swift */; };
 		2EFE0E4623B5746900CF3DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE0E4523B5746900CF3DCF /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2EB35D5723C92AE400CBD3A7 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		2EE9C8A423C04313003E7477 /* MemeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTextField.swift; sourceTree = "<group>"; };
 		2EFE0E4023B5746900CF3DCF /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFE0E4323B5746900CF3DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				2EFE0E5423B5746A00CF3DCF /* Info.plist */,
 				2EFE0E4C23B5746900CF3DCF /* MemeMe.xcdatamodeld */,
 				2EE9C8A423C04313003E7477 /* MemeTextField.swift */,
+				2EB35D5723C92AE400CBD3A7 /* Meme.swift */,
 			);
 			path = MemeMe;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				2EFE0E4823B5746900CF3DCF /* ViewController.swift in Sources */,
 				2EE9C8A523C04313003E7477 /* MemeTextField.swift in Sources */,
 				2EFE0E4E23B5746900CF3DCF /* MemeMe.xcdatamodeld in Sources */,
+				2EB35D5823C92AE400CBD3A7 /* Meme.swift in Sources */,
 				2EFE0E4423B5746900CF3DCF /* AppDelegate.swift in Sources */,
 				2EFE0E4623B5746900CF3DCF /* SceneDelegate.swift in Sources */,
 			);

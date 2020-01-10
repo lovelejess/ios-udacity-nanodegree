@@ -1,5 +1,6 @@
-MemeMe# - iOS Udacity App
+# MemeMe - iOS Udacity App
 
+MemeMe 1.0 is a meme-generating app that enables a user to attach a caption to a picture from their phone. After adding text to an image chosen from the Photo Album or Camera, the user can share it with friends.
 
 ## Getting Started
 
@@ -11,8 +12,8 @@ These instructions will get you a copy of the project up and running on your loc
 #### Versions
 
 * **Swift Version**: 5.1
-* **XCode Version**: 11.1
-* **iOS Version**: 13
+* **XCode Version**: 11.2
+* **iOS Version**: 13.1
 
 ### Installing
 

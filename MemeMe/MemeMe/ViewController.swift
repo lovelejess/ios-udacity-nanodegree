@@ -57,6 +57,8 @@ class ViewController: UIViewController {
         view.backgroundColor = .black
         topTextField.resignFirstResponder()
         bottomTextField.resignFirstResponder()
+        topTextField.attributedText = NSAttributedString(string: "TOP")
+        bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
     }
 
     override func viewDidLoad() {
@@ -81,6 +83,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: Keyboard private methods
 extension ViewController {
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
@@ -135,17 +138,13 @@ extension ViewController {
     }
 }
 
-
+// MARK: UIImagePicker delegates
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             memeImage.image = image
             memeImage.contentMode = .scaleAspectFit
-            topTextField.isHidden = false
-            bottomTextField.isHidden = false
             shareButton.isEnabled = true
-            topTextField.attributedText = NSAttributedString(string: "TOP")
-            bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
         }
         dismiss(animated: true, completion: nil)
     }
@@ -155,17 +154,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
 }
 
+// MARK: UITextField delegates
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
-}
-
-public struct Meme {
-    var topText: String
-    var bottomText: String
-    var originalImage: UIImage
-    var memedImage: UIImage
 }
