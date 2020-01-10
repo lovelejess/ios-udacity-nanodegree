@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="landscape" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDc-23-3O4" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="819" width="414" height="49"/>
+                                <rect key="frame" x="44" y="355" width="808" height="59"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="01a-WO-6cx"/>
                                     <barButtonItem image="camera" catalog="system" landscapeImage="camera" id="5NS-dD-XBi" userLabel="Camera">
@@ -32,16 +32,8 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rKx-7M-hub"/>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IMj-M2-7q8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="731"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wva-4N-cxL" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="20" y="765" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pW-h9-pZE" userLabel="Top Toolbar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="44" y="0.0" width="808" height="44"/>
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="vcs-MJ-jYm" userLabel="Share Button">
                                         <connections>
@@ -56,30 +48,40 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3y-fi-DHW" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="20" y="108" width="374" height="34"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IMj-M2-7q8">
+                                <rect key="frame" x="44" y="44" width="808" height="311"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wva-4N-cxL" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="44" y="301" width="808" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-HR-bMK" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="44" y="64" width="808" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="WDc-23-3O4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6MR-as-8kl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="9pW-h9-pZE" secondAttribute="top" id="ARi-Us-BwB"/>
-                            <constraint firstItem="IMj-M2-7q8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GKU-Ga-5Hw"/>
-                            <constraint firstItem="WDc-23-3O4" firstAttribute="top" secondItem="IMj-M2-7q8" secondAttribute="bottom" id="LpJ-RB-obq"/>
-                            <constraint firstItem="IMj-M2-7q8" firstAttribute="top" secondItem="9pW-h9-pZE" secondAttribute="bottom" id="Psb-SS-nza"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9pW-h9-pZE" secondAttribute="trailing" id="Yyr-tv-DdC"/>
-                            <constraint firstItem="WDc-23-3O4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bCQ-MQ-GJ7"/>
-                            <constraint firstItem="U3y-fi-DHW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dIo-CQ-hUI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IMj-M2-7q8" secondAttribute="trailing" id="gwm-Hz-YT1"/>
-                            <constraint firstItem="WDc-23-3O4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="6" id="hbp-W6-Uit"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U3y-fi-DHW" secondAttribute="trailing" constant="20" id="iVw-7T-H5k"/>
-                            <constraint firstItem="U3y-fi-DHW" firstAttribute="top" secondItem="9pW-h9-pZE" secondAttribute="bottom" constant="20" id="jTz-kf-elV"/>
-                            <constraint firstItem="wva-4N-cxL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jWG-ZX-f5V"/>
-                            <constraint firstItem="9pW-h9-pZE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k0C-Gu-ut5"/>
-                            <constraint firstItem="WDc-23-3O4" firstAttribute="top" secondItem="wva-4N-cxL" secondAttribute="bottom" constant="20" id="nsm-aE-cEK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wva-4N-cxL" secondAttribute="trailing" constant="20" id="zsG-o0-g4S"/>
+                            <constraint firstItem="xQ7-HR-bMK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1R2-Zf-ptb"/>
+                            <constraint firstItem="9pW-h9-pZE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7uB-Wu-yZ7"/>
+                            <constraint firstItem="xQ7-HR-bMK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Bdo-io-FBA"/>
+                            <constraint firstItem="wva-4N-cxL" firstAttribute="trailing" secondItem="IMj-M2-7q8" secondAttribute="trailing" id="DEx-eq-Bbh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IMj-M2-7q8" secondAttribute="bottom" constant="38" id="Io7-HB-DYl"/>
+                            <constraint firstItem="9pW-h9-pZE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KB0-YM-9cu"/>
+                            <constraint firstItem="wva-4N-cxL" firstAttribute="bottom" secondItem="IMj-M2-7q8" secondAttribute="bottom" constant="-20" id="MKV-ga-BkR"/>
+                            <constraint firstItem="WDc-23-3O4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="P7I-v0-nNZ"/>
+                            <constraint firstItem="WDc-23-3O4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PJY-tG-iDC"/>
+                            <constraint firstItem="xQ7-HR-bMK" firstAttribute="top" secondItem="9pW-h9-pZE" secondAttribute="bottom" constant="20" id="PPo-hI-mNn"/>
+                            <constraint firstItem="9pW-h9-pZE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bI4-Kw-4dG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IMj-M2-7q8" secondAttribute="trailing" id="cLr-PK-M9L"/>
+                            <constraint firstItem="WDc-23-3O4" firstAttribute="top" secondItem="IMj-M2-7q8" secondAttribute="bottom" id="hz6-Cn-wfS"/>
+                            <constraint firstAttribute="bottom" secondItem="WDc-23-3O4" secondAttribute="bottom" id="lBJ-1D-X3b"/>
+                            <constraint firstItem="wva-4N-cxL" firstAttribute="leading" secondItem="IMj-M2-7q8" secondAttribute="leading" id="n2G-Hn-SXB"/>
+                            <constraint firstItem="IMj-M2-7q8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="p5B-6R-pPy"/>
+                            <constraint firstItem="IMj-M2-7q8" firstAttribute="top" secondItem="9pW-h9-pZE" secondAttribute="bottom" id="wkB-KP-caR"/>
+                            <constraint firstItem="IMj-M2-7q8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zFi-ub-8M8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -90,13 +92,13 @@
                         <outlet property="memeImage" destination="IMj-M2-7q8" id="tDf-jG-Xj6"/>
                         <outlet property="photoAlbumButton" destination="AVk-jA-mDp" id="Jgx-J9-VHZ"/>
                         <outlet property="shareButton" destination="vcs-MJ-jYm" id="Bd6-J2-VXe"/>
-                        <outlet property="topTextField" destination="U3y-fi-DHW" id="K1k-2Q-mXe"/>
+                        <outlet property="topTextField" destination="wva-4N-cxL" id="YXp-AJ-MpS"/>
                         <outlet property="topToolbar" destination="9pW-h9-pZE" id="WCE-db-NfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="135.9375" y="136.23188405797103"/>
         </scene>
     </scenes>
     <resources>

@@ -53,17 +53,19 @@ class ViewController: UIViewController {
 
     @IBAction func onCancelButtonPressed(_ sender: Any) {
         memeImage.image = nil
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
         shareButton.isEnabled = false
+        view.backgroundColor = .black
+        topTextField.resignFirstResponder()
+        bottomTextField.resignFirstResponder()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         topTextField.delegate = self
         bottomTextField.delegate = self
-        topTextField.isHidden = true
-        bottomTextField.isHidden = true
+        topTextField.clearsOnBeginEditing = true
+        bottomTextField.clearsOnBeginEditing = true
+        view.backgroundColor = .black
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +114,7 @@ extension ViewController {
         guard let topText = topTextField.text else { return }
         guard let bottomText = bottomTextField.text else { return }
         guard let image = memeImage.image else { return }
-        // TODO: What am I supposed to do with this??
+        // Requirements says to create a Meme Struct, but not sure what else to do with it
         let _ = Meme(topText: topText, bottomText: bottomText, originalImage: image, memedImage: generatedImage)
     }
 
@@ -138,7 +140,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             memeImage.image = image
-            memeImage.contentMode = .scaleToFill
+            memeImage.contentMode = .scaleAspectFit
             topTextField.isHidden = false
             bottomTextField.isHidden = false
             shareButton.isEnabled = true
