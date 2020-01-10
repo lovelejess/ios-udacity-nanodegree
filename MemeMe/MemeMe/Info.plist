@@ -55,6 +55,8 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Save MemeMe to Photo Album</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take photos for MemeMe app</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
