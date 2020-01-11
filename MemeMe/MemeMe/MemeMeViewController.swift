@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeMeViewController.swift
 //  MemeMe
 //
 //  Created by Jess Le on 12/26/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemeMeViewController: UIViewController {
 
     @IBOutlet weak var photoAlbumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -38,16 +38,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func selectFromLibrary() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
+        let imagePicker = createImagePicker(sourceType: .photoLibrary)
         present(imagePicker, animated: true, completion: nil)
     }
 
     @IBAction func selectFromCamera() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        let imagePicker = createImagePicker(sourceType: .camera)
         present(imagePicker, animated: true, completion: nil)
     }
 
@@ -57,8 +53,8 @@ class ViewController: UIViewController {
         view.backgroundColor = .black
         topTextField.resignFirstResponder()
         bottomTextField.resignFirstResponder()
-        topTextField.attributedText = NSAttributedString(string: "TOP")
-        bottomTextField.attributedText = NSAttributedString(string: "BOTTOM")
+        setTextFieldText(for: topTextField, text: "TOP")
+        setTextFieldText(for: bottomTextField, text: "BOTTOM")
     }
 
     override func viewDidLoad() {
@@ -84,7 +80,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: Keyboard private methods
-extension ViewController {
+extension MemeMeViewController {
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
@@ -102,13 +98,13 @@ extension ViewController {
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        if (bottomTextField.isFirstResponder) {
+        if bottomTextField.isFirstResponder {
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
-        if (bottomTextField.isFirstResponder) {
+        if bottomTextField.isFirstResponder {
             view.frame.origin.y = 0
         }
     }
@@ -139,7 +135,7 @@ extension ViewController {
 }
 
 // MARK: UIImagePicker delegates
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             memeImage.image = image
@@ -155,9 +151,22 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 // MARK: UITextField delegates
-extension ViewController: UITextFieldDelegate {
+extension MemeMeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension MemeMeViewController {
+    func createImagePicker(sourceType: UIImagePickerController.SourceType) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        return imagePicker
+    }
+
+    func setTextFieldText(for textField: UITextField, text: String) {
+        textField.attributedText = NSAttributedString(string: text)
     }
 }
