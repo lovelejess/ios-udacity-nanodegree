@@ -15,11 +15,21 @@ class MemeMeViewController: UIViewController {
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var topTextField: MemeTextField!
     @IBOutlet weak var bottomTextField: MemeTextField!
-    @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    var shareButton: UIBarButtonItem {
+        let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(onShareButtonPressed))
+        return button
+    }
+    
+    var topToolbar: UIToolbar? {
+        if let toolbar = self.navigationController?.toolbar {
+            return toolbar
+        }
+        return UIToolbar()
+    }
 
-    @IBAction func onShareButtonPressed(_ sender: Any) {
+    @objc func onShareButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
         vc.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed:
@@ -64,6 +74,7 @@ class MemeMeViewController: UIViewController {
         topTextField.clearsOnBeginEditing = true
         bottomTextField.clearsOnBeginEditing = true
         view.backgroundColor = .black
+        self.navigationItem.rightBarButtonItem = shareButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -113,13 +124,19 @@ extension MemeMeViewController {
         guard let topText = topTextField.text else { return }
         guard let bottomText = bottomTextField.text else { return }
         guard let image = memeImage.image else { return }
-        // Requirements says to create a Meme Struct, but not sure what else to do with it
-        let _ = Meme(topText: topText, bottomText: bottomText, originalImage: image, memedImage: generatedImage)
+
+        // Create the meme
+        let meme = Meme(topText: topText, bottomText: bottomText, originalImage: image, memedImage: generatedImage)
+
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
 
     func generateMemedImage() -> UIImage {
         // Remove Toolbars from view to avoid saving in MemedImage
-        topToolbar.isHidden = true
+        topToolbar?.isHidden = true
         bottomToolbar.isHidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(view.frame.size)
@@ -128,7 +145,7 @@ extension MemeMeViewController {
         UIGraphicsEndImageContext()
 
         // Add Toolbars back
-        topToolbar.isHidden = false
+        topToolbar?.isHidden = false
         bottomToolbar.isHidden = false
         return generatedImage
     }
