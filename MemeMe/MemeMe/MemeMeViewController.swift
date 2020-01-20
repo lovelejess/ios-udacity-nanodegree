@@ -32,19 +32,9 @@ class MemeMeViewController: UIViewController {
     @objc func onShareButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
-        vc.completionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed:
-        Bool, arrayReturnedItems: [Any]?, error: Error?) in
-            if completed {
-                self.save(generatedImage: image)
-                return
-            }
-            if let shareError = error {
-                let errorMessage = "Error while sharing: \(shareError.localizedDescription)"
-                let alertView = UIAlertController(title: "Error!", message: errorMessage, preferredStyle: .alert)
-                self.present(alertView, animated: true)
-            }
-        }
-        present(vc, animated: true)
+        present(vc, animated: true, completion: {
+            self.save(generatedImage: image)
+        })
     }
 
     @IBAction func selectFromLibrary() {
