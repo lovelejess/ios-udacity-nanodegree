@@ -9,10 +9,40 @@
 import UIKit
 
 class MemeMeCollectionViewCell: UICollectionViewCell {
-    
-    // MARK: Outlets
 
-    @IBOutlet weak var memeImage: UIImageView!
-    @IBOutlet weak var memeName: UILabel!
-    
+    var imageSize:CGFloat?
+
+    var memeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializeCell()
+     }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initializeCell()
+    }
+
+    private func initializeCell() {
+        contentView.isUserInteractionEnabled = false
+        contentView.backgroundColor = .systemGray
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+
+        self.addSubview(memeImage)
+
+        setImageLayout()
+    }
+
+    private func setImageLayout() {
+        memeImage.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        memeImage.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor).isActive = true
+     }
 }
