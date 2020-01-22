@@ -15,19 +15,9 @@ class MemeMeViewController: UIViewController {
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var topTextField: MemeTextField!
     @IBOutlet weak var bottomTextField: MemeTextField!
+    @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
-    
-    var shareButton: UIBarButtonItem {
-        let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(onShareButtonPressed))
-        return button
-    }
-    
-    var topToolbar: UIToolbar? {
-        if let toolbar = self.navigationController?.toolbar {
-            return toolbar
-        }
-        return UIToolbar()
-    }
+    @IBOutlet weak var shareButton: UIBarButtonItem!
 
     @objc func onShareButtonPressed(_ sender: Any) {
         let image = generateMemedImage()
@@ -48,13 +38,7 @@ class MemeMeViewController: UIViewController {
     }
 
     @IBAction func onCancelButtonPressed(_ sender: Any) {
-        memeImage.image = nil
-        shareButton.isEnabled = false
-        view.backgroundColor = .black
-        topTextField.resignFirstResponder()
-        bottomTextField.resignFirstResponder()
-        setTextFieldText(for: topTextField, text: "TOP")
-        setTextFieldText(for: bottomTextField, text: "BOTTOM")
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -147,9 +131,10 @@ extension MemeMeViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let image = info[.originalImage] as? UIImage {
             memeImage.image = image
             memeImage.contentMode = .scaleAspectFit
-            shareButton.isEnabled = true
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.shareButton.isEnabled = true
+        })
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

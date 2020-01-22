@@ -21,7 +21,6 @@ class MemeMeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView!.register(MemeMeTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.rowHeight = 200
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +41,7 @@ class MemeMeTableViewController: UITableViewController {
         let meme = memes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeMeTableViewCell", for: indexPath) as! MemeMeTableViewCell
         cell.memeImage?.image = meme.memedImage
-        cell.topText?.text = meme.topText + " " + meme.bottomText
+        cell.memeText?.text = meme.topText + " " + meme.bottomText
         return cell
     }
 

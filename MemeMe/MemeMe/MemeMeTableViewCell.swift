@@ -11,8 +11,7 @@ import UIKit
 class MemeMeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memeImage: UIImageView!
-    @IBOutlet weak var topText: UILabel!
-    @IBOutlet weak var bottomText: UILabel!
+    @IBOutlet weak var memeText: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +20,6 @@ class MemeMeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

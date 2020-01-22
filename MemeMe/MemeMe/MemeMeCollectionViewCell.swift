@@ -31,13 +31,10 @@ class MemeMeCollectionViewCell: UICollectionViewCell {
     }
 
     private func initializeCell() {
-        contentView.isUserInteractionEnabled = false
-        contentView.backgroundColor = .systemGray
         layer.cornerRadius = 5
         layer.masksToBounds = true
 
         self.addSubview(memeImage)
-
         setImageLayout()
     }
 

@@ -117,7 +117,6 @@
 			children = (
 				2EFE0E4323B5746900CF3DCF /* AppDelegate.swift */,
 				2EFE0E4523B5746900CF3DCF /* SceneDelegate.swift */,
-				2EFE0E4723B5746900CF3DCF /* MemeMeViewController.swift */,
 				2EFE0E4923B5746900CF3DCF /* Main.storyboard */,
 				2EFE0E4F23B5746A00CF3DCF /* Assets.xcassets */,
 				2EFE0E5123B5746A00CF3DCF /* LaunchScreen.storyboard */,
@@ -125,6 +124,7 @@
 				2EFE0E4C23B5746900CF3DCF /* MemeMe.xcdatamodeld */,
 				2EE9C8A423C04313003E7477 /* MemeTextField.swift */,
 				2EB35D5723C92AE400CBD3A7 /* Meme.swift */,
+				2EFE0E4723B5746900CF3DCF /* MemeMeViewController.swift */,
 				2E94CC2B23D3E8ED0098AE3D /* MemeMeCollectionViewController.swift */,
 				2E52729823D40FEB009BB153 /* MemeMeCollectionViewCell.swift */,
 				2E26D4A423D53E470090003B /* MemeMeTableViewController.swift */,
