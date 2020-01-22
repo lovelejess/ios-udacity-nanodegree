@@ -35,6 +35,8 @@ class MemeMeCollectionViewController: UICollectionViewController {
 
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+
+        self.collectionView.reloadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
