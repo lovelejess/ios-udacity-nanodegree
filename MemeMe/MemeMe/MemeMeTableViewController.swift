@@ -10,6 +10,8 @@ import UIKit
 
 class MemeMeTableViewController: UITableViewController {
 
+    public var viewController: MemeMeViewController?
+
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -20,11 +22,19 @@ class MemeMeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView!.register(MemeMeTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(MemeMeTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 120
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
+    }
+
+    @IBAction func onAddButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MemeMeViewController") as! MemeMeViewController
+        viewController.memeViewDelegate = self
+        present(viewController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -51,5 +61,11 @@ class MemeMeTableViewController: UITableViewController {
         let viewController = MemeMeDetailsViewController()
         viewController.memeImageView.image = memes[indexPath.row].memedImage
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension MemeMeTableViewController: MemeViewDelegate {
+    func refreshView() {
+        self.tableView?.reloadData()
     }
 }

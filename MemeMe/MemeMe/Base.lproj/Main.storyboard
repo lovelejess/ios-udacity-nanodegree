@@ -66,7 +66,7 @@
                     <navigationItem key="navigationItem" title="Saved MemeMe" id="kN7-kL-JEJ">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="uId-Du-kAa">
                             <connections>
-                                <segue destination="h3A-lB-beD" kind="showDetail" id="aTi-sd-JY4"/>
+                                <action selector="onAddButtonPressed:" destination="nHb-xe-ZjF" id="ZJx-v8-w0E"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -95,21 +95,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0to-dx-xeR">
-                                            <rect key="frame" x="20" y="11" width="190" height="98"/>
+                                            <rect key="frame" x="20" y="11" width="190" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="29g-v5-oWz"/>
                                                 <constraint firstAttribute="width" constant="190" id="YVF-AX-m9V"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaS-7o-ZGA">
-                                            <rect key="frame" x="242" y="49.5" width="160" height="21"/>
+                                            <rect key="frame" x="242" y="50.5" width="160" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="0to-dx-xeR" firstAttribute="bottom" secondItem="pTp-fZ-Ix3" secondAttribute="bottomMargin" id="1MI-52-fck"/>
                                         <constraint firstItem="qaS-7o-ZGA" firstAttribute="leading" secondItem="0to-dx-xeR" secondAttribute="trailing" constant="32" id="Rqz-2R-Zfd"/>
                                         <constraint firstItem="0to-dx-xeR" firstAttribute="leading" secondItem="pTp-fZ-Ix3" secondAttribute="leadingMargin" id="Whk-A6-8X3"/>
                                         <constraint firstItem="0to-dx-xeR" firstAttribute="top" secondItem="pTp-fZ-Ix3" secondAttribute="topMargin" id="emn-w5-hsH"/>
@@ -131,7 +130,7 @@
                     <navigationItem key="navigationItem" title="Saved MemeMe" id="RjW-BU-6hb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Djw-31-Iti">
                             <connections>
-                                <segue destination="h3A-lB-beD" kind="showDetail" id="Wd3-Qx-V0y"/>
+                                <action selector="onAddButtonPressed:" destination="78A-eL-SGA" id="EsZ-fW-D07"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -160,13 +159,13 @@
         <!--Meme Me View Controller-->
         <scene sceneID="4zj-Pi-eaT">
             <objects>
-                <viewController id="h3A-lB-beD" customClass="MemeMeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeMeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h3A-lB-beD" customClass="MemeMeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pv6-qf-NJ4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYS-Db-ZxJ" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="770" width="414" height="62"/>
+                                <rect key="frame" x="0.0" y="824" width="414" height="62"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JRG-C1-NKU"/>
                                     <barButtonItem image="camera" catalog="system" landscapeImage="camera" id="S0N-nO-6QR" userLabel="Camera">
@@ -183,7 +182,7 @@
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSG-4K-n1W" userLabel="Top Toolbar">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <barButtonItem image="square.and.arrow.up" catalog="system" id="XGp-jE-HZF" userLabel="Share Button">
                                         <connections>
@@ -199,15 +198,15 @@
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rl4-pF-6Ix">
-                                <rect key="frame" x="0.0" y="44" width="414" height="726"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="736"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pbZ-nV-cca" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="716" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="770" width="414" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mgP-ie-noz" customClass="MemeTextField" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -258,7 +257,4 @@
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="aTi-sd-JY4"/>
-    </inferredMetricsTieBreakers>
 </document>

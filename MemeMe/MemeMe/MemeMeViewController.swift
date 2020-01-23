@@ -10,6 +10,8 @@ import UIKit
 
 class MemeMeViewController: UIViewController {
 
+    public var memeViewDelegate: MemeViewDelegate?
+
     @IBOutlet weak var photoAlbumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var memeImage: UIImageView!
@@ -38,7 +40,9 @@ class MemeMeViewController: UIViewController {
     }
 
     @IBAction func onCancelButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            self.memeViewDelegate?.refreshView()}
+        )
     }
 
     override func viewDidLoad() {
@@ -48,7 +52,7 @@ class MemeMeViewController: UIViewController {
         topTextField.clearsOnBeginEditing = true
         bottomTextField.clearsOnBeginEditing = true
         view.backgroundColor = .black
-        self.navigationItem.rightBarButtonItem = shareButton
+        navigationItem.rightBarButtonItem = shareButton
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -161,4 +165,8 @@ extension MemeMeViewController {
     func setTextFieldText(for textField: UITextField, text: String) {
         textField.attributedText = NSAttributedString(string: text)
     }
+}
+
+protocol MemeViewDelegate {
+    func refreshView()
 }
