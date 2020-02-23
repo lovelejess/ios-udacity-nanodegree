@@ -28,7 +28,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = movie.title
-        
+        TMDBClient.downloadPosterImage(posterPath: movie.posterPath ?? "", completion: handleDownloadedImageResponse(data:error:))
         toggleBarButton(watchlistBarButtonItem, enabled: isWatchlist)
         toggleBarButton(favoriteBarButtonItem, enabled: isFavorite)
         
@@ -49,7 +49,20 @@ class MovieDetailViewController: UIViewController {
             button.tintColor = UIColor.gray
         }
     }
-    
+
+    func handleDownloadedImageResponse(data: Data?, error: Error?) {
+        if let data = data {
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                self.imageView.image = image
+            }
+        } else {
+            print("error: \(error?.localizedDescription)")
+        }
+        
+        
+    }
+        
     func handleWatchlistResponse(isSuccessful: Bool, error: Error?) {
         if isSuccessful {
             if isWatchlist {
