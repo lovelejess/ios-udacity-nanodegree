@@ -31,9 +31,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginViaWebsiteTapped()   {
         TMDBClient.getRequestToken { (isSuccessful, error) in
             if isSuccessful {
-                DispatchQueue.main.async {
-                    UIApplication.shared.open(TMDBClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
-                    }
+                UIApplication.shared.open(TMDBClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
                 }
             }
         }
@@ -41,9 +39,7 @@ class LoginViewController: UIViewController {
     func handleRequestTokenResponse(isSuccessful: Bool, error: Error?) {
         if isSuccessful {
             print("Request Token: \(TMDBClient.Auth.requestToken)")
-            DispatchQueue.main.async { // because we're accessing these ui components on a completion handler that might be executed in the background, need to wrap in call in async
-                TMDBClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: self.handleLoginResponse(isSuccessful:error:))
-            }
+            TMDBClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: self.handleLoginResponse(isSuccessful:error:))
         }
     }
     
@@ -57,9 +53,7 @@ class LoginViewController: UIViewController {
     func handleSessionResponse(isSuccessful: Bool, error: Error?) {
         if isSuccessful {
             print("SessionID: \(TMDBClient.Auth.sessionId)")
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "completeLogin", sender: nil)
-            }
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
         }
     }
     
