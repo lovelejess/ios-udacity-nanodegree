@@ -37,6 +37,9 @@
                                         <state key="normal" title="LOG IN">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onLoginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="88U-oW-EPG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
