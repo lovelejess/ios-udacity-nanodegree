@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7A3-3p-tI3" firstAttribute="trailing" secondItem="Shn-r2-P81" secondAttribute="trailing" id="BBH-cb-ptz"/>
                             <constraint firstItem="Shn-r2-P81" firstAttribute="leading" secondItem="7A3-3p-tI3" secondAttribute="leading" id="E1q-Uh-oxi"/>
@@ -28,12 +28,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7A3-3p-tI3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="mappin.and.ellipse" catalog="system" landscapeImage="mappin.and.ellipse" selectedImage="mappin.and.ellipse" id="k21-jd-ZrL"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_pin" id="Iaq-8f-Xsc"/>
+                    <navigationItem key="navigationItem" id="U22-Rw-qoe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCi-JL-Qq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="127"/>
+            <point key="canvasLocation" x="937.68115942028987" y="126.5625"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dlc-95-6VU">
@@ -50,8 +51,28 @@
             </objects>
             <point key="canvasLocation" x="-709" y="127"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AVa-7H-lfZ">
+            <objects>
+                <navigationController storyboardIdentifier="MainMapNavigation" automaticallyAdjustsScrollViewInsets="NO" id="VEW-YS-FIR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="mappin.and.ellipse" catalog="system" landscapeImage="mappin.and.ellipse" selectedImage="mappin.and.ellipse" id="k21-jd-ZrL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PO9-lE-aMm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bGZ-YO-bP1" kind="relationship" relationship="rootViewController" id="kOA-fp-DTc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyp-cW-PpX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27.536231884057973" y="126.5625"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="icon_pin" width="24" height="24"/>
         <image name="mappin.and.ellipse" catalog="system" width="58" height="64"/>
     </resources>
 </document>

@@ -13,6 +13,7 @@ class MainMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "On the Map"
 
         // Do any additional setup after loading the view.
     }
