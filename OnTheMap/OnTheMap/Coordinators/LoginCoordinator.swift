@@ -31,9 +31,10 @@ class LoginCoordinator: Coordinatable {
             rootViewController = loginViewController
         } else if case .mainMapView = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
-            let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation")
+            let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainTabBarView") as UITabBarController
             let viewController: MainMapViewController = storyboard.viewController()
             window?.rootViewController = mainMapNavigationController
+            mainMapNavigationController.viewControllers = [viewController]
             
             viewController.coordinator = self
         }
