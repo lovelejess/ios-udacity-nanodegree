@@ -7,17 +7,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Main Map View Controller-->
         <scene sceneID="Ie1-lJ-Y1Y">
             <objects>
                 <viewController storyboardIdentifier="MainMapViewController" id="bGZ-YO-bP1" customClass="MainMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fMb-8C-ghF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-r2-P81">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7A3-3p-tI3" firstAttribute="trailing" secondItem="Shn-r2-P81" secondAttribute="trailing" id="BBH-cb-ptz"/>
+                            <constraint firstItem="Shn-r2-P81" firstAttribute="leading" secondItem="7A3-3p-tI3" secondAttribute="leading" id="E1q-Uh-oxi"/>
+                            <constraint firstItem="7A3-3p-tI3" firstAttribute="bottom" secondItem="Shn-r2-P81" secondAttribute="bottom" id="W87-Hj-Uqs"/>
+                            <constraint firstItem="Shn-r2-P81" firstAttribute="top" secondItem="fMb-8C-ghF" secondAttribute="top" id="cch-oR-cXk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7A3-3p-tI3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="lNT-4d-6ZQ"/>
+                    <tabBarItem key="tabBarItem" title="" image="mappin.and.ellipse" catalog="system" landscapeImage="mappin.and.ellipse" selectedImage="mappin.and.ellipse" id="k21-jd-ZrL"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCi-JL-Qq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,4 +51,7 @@
             <point key="canvasLocation" x="-709" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mappin.and.ellipse" catalog="system" width="58" height="64"/>
+    </resources>
 </document>
