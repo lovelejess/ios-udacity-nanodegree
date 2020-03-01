@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Map View Controller-->
+        <!--On the Map-->
         <scene sceneID="Ie1-lJ-Y1Y">
             <objects>
                 <viewController storyboardIdentifier="MainMapViewController" id="bGZ-YO-bP1" customClass="MainMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-r2-P81">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -24,13 +24,18 @@
                             <constraint firstItem="7A3-3p-tI3" firstAttribute="trailing" secondItem="Shn-r2-P81" secondAttribute="trailing" id="BBH-cb-ptz"/>
                             <constraint firstItem="Shn-r2-P81" firstAttribute="leading" secondItem="7A3-3p-tI3" secondAttribute="leading" id="E1q-Uh-oxi"/>
                             <constraint firstItem="7A3-3p-tI3" firstAttribute="bottom" secondItem="Shn-r2-P81" secondAttribute="bottom" id="W87-Hj-Uqs"/>
-                            <constraint firstItem="Shn-r2-P81" firstAttribute="top" secondItem="fMb-8C-ghF" secondAttribute="top" id="cch-oR-cXk"/>
+                            <constraint firstItem="Shn-r2-P81" firstAttribute="top" secondItem="7A3-3p-tI3" secondAttribute="top" id="ky6-9A-dCT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7A3-3p-tI3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_pin" id="Iaq-8f-Xsc"/>
-                    <navigationItem key="navigationItem" id="U22-Rw-qoe"/>
+                    <navigationItem key="navigationItem" title="On the Map" leftItemsSupplementBackButton="YES" id="KgI-qa-daB">
+                        <barButtonItem key="backBarButtonItem" title="LOGOUT" id="7Iw-bx-AwF"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="Shn-r2-P81" id="bo6-cE-7vA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCi-JL-Qq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +54,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOH-mN-99U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-709" y="127"/>
+            <point key="canvasLocation" x="-457" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AVa-7H-lfZ">
@@ -68,7 +73,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyp-cW-PpX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="27.536231884057973" y="126.5625"/>
+            <point key="canvasLocation" x="230" y="127"/>
         </scene>
     </scenes>
     <resources>

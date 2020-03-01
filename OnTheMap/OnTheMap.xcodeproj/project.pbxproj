@@ -15,6 +15,7 @@
 		2E2B318B240C1AEA00A7626A /* MainMapViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */; };
 		2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B318C240C1B6000A7626A /* MainMapViewController.swift */; };
 		2E638110240C309A002BCFA6 /* StoryboardNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63810F240C309A002BCFA6 /* StoryboardNames.swift */; };
+		2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */; };
 		2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1824030EF400A9CC8D /* AppDelegate.swift */; };
 		2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */; };
 		2ED79B2024030EF400A9CC8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED79B1E24030EF400A9CC8D /* MainStoryboard.storyboard */; };
@@ -56,6 +57,7 @@
 		2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMapViewStoryboard.storyboard; sourceTree = "<group>"; };
 		2E2B318C240C1B6000A7626A /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		2E63810F240C309A002BCFA6 /* StoryboardNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNames.swift; sourceTree = "<group>"; };
+		2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCoordinator.swift; sourceTree = "<group>"; };
 		2ED79B1524030EF400A9CC8D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED79B1824030EF400A9CC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				2E2B3181240C113100A7626A /* AppCoordinator.swift */,
 				2E2B3183240C11D200A7626A /* Destination.swift */,
 				2E2B3188240C16F100A7626A /* LoginCoordinator.swift */,
+				2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				2ED79B2324030EF400A9CC8D /* OnTheMap.xcdatamodeld in Sources */,
 				2ED79B5D240364BF00A9CC8D /* SessionResponse.swift in Sources */,
 				2ED79B59240318C500A9CC8D /* UdacityClient.swift in Sources */,
+				2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */,
 				2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */,
 				2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */,
 				2ED79B552403148000A9CC8D /* LinkTextView.swift in Sources */,

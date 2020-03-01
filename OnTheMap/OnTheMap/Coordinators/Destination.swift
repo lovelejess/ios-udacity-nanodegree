@@ -10,6 +10,7 @@ import Foundation
 
 enum Destination {
     case login
+    case logout
     case mainMapView
 }
 

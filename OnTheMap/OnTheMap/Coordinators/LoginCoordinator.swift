@@ -37,7 +37,10 @@ class LoginCoordinator: Coordinatable {
             mainTabBarViewController.viewControllers = [viewController]
             mainMapNavigationController.viewControllers = [mainTabBarViewController]
             window?.rootViewController = mainMapNavigationController
-            viewController.coordinator = self
+
+            let coordinator = MainMapCoordinator(window: window!)
+            childCoordinators.append(coordinator)
+            viewController.coordinator = coordinator
         }
     }
 }
