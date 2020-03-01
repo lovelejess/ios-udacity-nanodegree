@@ -102,6 +102,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E638111240C3122002BCFA6 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2ED79B1824030EF400A9CC8D /* AppDelegate.swift */,
+				2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		2E638112240C3139002BCFA6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2ED79B2124030EF400A9CC8D /* OnTheMap.xcdatamodeld */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		2ED79B0C24030EF400A9CC8D = {
 			isa = PBXGroup;
 			children = (
@@ -125,13 +142,12 @@
 		2ED79B1724030EF400A9CC8D /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				2ED79B1824030EF400A9CC8D /* AppDelegate.swift */,
 				2ED79B2924030EF700A9CC8D /* Info.plist */,
-				2ED79B2124030EF400A9CC8D /* OnTheMap.xcdatamodeld */,
-				2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */,
 				2ED79B4F2403118200A9CC8D /* Assets */,
+				2E638112240C3139002BCFA6 /* Config */,
 				2EE770E3240C0E630007598B /* Coordinators */,
 				2ED79B562403186C00A9CC8D /* Custom Components */,
+				2E638111240C3122002BCFA6 /* Delegates */,
 				2ED79B4C2403113200A9CC8D /* Model */,
 				2ED79B57240318A400A9CC8D /* Networking */,
 				2ED79B4B2403112D00A9CC8D /* View */,
