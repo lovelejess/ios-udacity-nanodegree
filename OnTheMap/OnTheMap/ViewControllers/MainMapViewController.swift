@@ -9,6 +9,7 @@
 import UIKit
 
 class MainMapViewController: UIViewController {
+    weak var coordinator: LoginCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

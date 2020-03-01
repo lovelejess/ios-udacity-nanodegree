@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B317F240C0F9200A7626A /* Coordinatable.swift */; };
+		2E2B3182240C113100A7626A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3181240C113100A7626A /* AppCoordinator.swift */; };
+		2E2B3184240C11D200A7626A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3183240C11D200A7626A /* Destination.swift */; };
+		2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3186240C12E000A7626A /* StoryboardIdentifiable.swift */; };
+		2E2B3189240C16F100A7626A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3188240C16F100A7626A /* LoginCoordinator.swift */; };
+		2E2B318B240C1AEA00A7626A /* MainMapViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */; };
+		2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B318C240C1B6000A7626A /* MainMapViewController.swift */; };
 		2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1824030EF400A9CC8D /* AppDelegate.swift */; };
 		2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */; };
 		2ED79B2024030EF400A9CC8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED79B1E24030EF400A9CC8D /* Main.storyboard */; };
@@ -40,6 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E2B317F240C0F9200A7626A /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
+		2E2B3181240C113100A7626A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2E2B3183240C11D200A7626A /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		2E2B3186240C12E000A7626A /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
+		2E2B3188240C16F100A7626A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMapViewStoryboard.storyboard; sourceTree = "<group>"; };
+		2E2B318C240C1B6000A7626A /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		2ED79B1524030EF400A9CC8D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED79B1824030EF400A9CC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,17 +123,18 @@
 		2ED79B1724030EF400A9CC8D /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				2ED79B2924030EF700A9CC8D /* Info.plist */,
-				2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */,
 				2ED79B1824030EF400A9CC8D /* AppDelegate.swift */,
+				2ED79B2924030EF700A9CC8D /* Info.plist */,
 				2ED79B2124030EF400A9CC8D /* OnTheMap.xcdatamodeld */,
+				2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */,
 				2ED79B4F2403118200A9CC8D /* Assets */,
+				2EE770E3240C0E630007598B /* Coordinators */,
 				2ED79B562403186C00A9CC8D /* Custom Components */,
-				2ED79B57240318A400A9CC8D /* Networking */,
-				2ED79B4E2403114400A9CC8D /* ViewModel */,
-				2ED79B4D2403113900A9CC8D /* ViewController */,
 				2ED79B4C2403113200A9CC8D /* Model */,
+				2ED79B57240318A400A9CC8D /* Networking */,
 				2ED79B4B2403112D00A9CC8D /* View */,
+				2ED79B4D2403113900A9CC8D /* ViewControllers */,
+				2ED79B4E2403114400A9CC8D /* ViewModel */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -145,6 +160,7 @@
 		2ED79B4B2403112D00A9CC8D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2E2B3186240C12E000A7626A /* StoryboardIdentifiable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,12 +174,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2ED79B4D2403113900A9CC8D /* ViewController */ = {
+		2ED79B4D2403113900A9CC8D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2E2B318C240C1B6000A7626A /* MainMapViewController.swift */,
 				2ED79B52240312E500A9CC8D /* LoginViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		2ED79B4E2403114400A9CC8D /* ViewModel */ = {
@@ -179,6 +196,7 @@
 				2ED79B2624030EF700A9CC8D /* LaunchScreen.storyboard */,
 				2ED79B1E24030EF400A9CC8D /* Main.storyboard */,
 				2ED79B2424030EF700A9CC8D /* Assets.xcassets */,
+				2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -197,6 +215,17 @@
 				2ED79B58240318C500A9CC8D /* UdacityClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		2EE770E3240C0E630007598B /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2E2B317F240C0F9200A7626A /* Coordinatable.swift */,
+				2E2B3181240C113100A7626A /* AppCoordinator.swift */,
+				2E2B3183240C11D200A7626A /* Destination.swift */,
+				2E2B3188240C16F100A7626A /* LoginCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E2B318B240C1AEA00A7626A /* MainMapViewStoryboard.storyboard in Resources */,
 				2ED79B2824030EF700A9CC8D /* LaunchScreen.storyboard in Resources */,
 				2ED79B2524030EF700A9CC8D /* Assets.xcassets in Resources */,
 				2ED79B2024030EF400A9CC8D /* Main.storyboard in Resources */,
@@ -330,11 +360,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */,
 				2ED79B53240312E500A9CC8D /* LoginViewController.swift in Sources */,
 				2ED79B5B2403646200A9CC8D /* SessionRequest.swift in Sources */,
+				2E2B3184240C11D200A7626A /* Destination.swift in Sources */,
+				2E2B3182240C113100A7626A /* AppCoordinator.swift in Sources */,
+				2E2B3189240C16F100A7626A /* LoginCoordinator.swift in Sources */,
 				2ED79B2324030EF400A9CC8D /* OnTheMap.xcdatamodeld in Sources */,
 				2ED79B5D240364BF00A9CC8D /* SessionResponse.swift in Sources */,
 				2ED79B59240318C500A9CC8D /* UdacityClient.swift in Sources */,
+				2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */,
+				2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */,
 				2ED79B552403148000A9CC8D /* LinkTextView.swift in Sources */,
 				2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */,
 				2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */,

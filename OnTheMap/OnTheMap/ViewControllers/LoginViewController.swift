@@ -9,6 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    weak var coordinator: LoginCoordinator?
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -30,11 +31,13 @@ class LoginViewController: UIViewController {
     }
     
     func handleLogin(isSuccessful: Bool, error: Error?) {
-        if isSuccessful {
-            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
-        } else {
-            print("ERROR")
-        }
+        coordinator?.navigate(to: .mainMapView)
+//        if isSuccessful {
+//            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
+//            coordinator?.navigate(to: .mainMapView)
+//        } else {
+//            print("Error: Unable to login")
+//        }
     }
 
 }
