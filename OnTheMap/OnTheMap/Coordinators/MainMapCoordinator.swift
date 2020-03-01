@@ -30,6 +30,13 @@ class MainMapCoordinator: Coordinatable {
                 window?.rootViewController = coordinator.rootViewController
             }
             rootViewController = loginViewController
+        } else if case .mainTabBar(.mainMapView) = destination {
+            let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
+            let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
+            let viewController: MainMapViewController = storyboard.instantiateViewController(identifier: "MainMapViewController") as MainMapViewController
+            mainMapNavigationController.viewControllers = [viewController]
+            rootViewController = mainMapNavigationController
+            viewController.coordinator = self
         }
     }
 }

@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     func handleLogin(isSuccessful: Bool, error: Error?) {
-        coordinator?.navigate(to: .mainMapView)
+        coordinator?.navigate(to: .mainTabBar(.mainMapView))
 //        if isSuccessful {
 //            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
 //            coordinator?.navigate(to: .mainMapView)

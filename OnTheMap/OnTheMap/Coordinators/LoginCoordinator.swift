@@ -12,7 +12,6 @@ import UIKit
 class LoginCoordinator: Coordinatable {
     var childCoordinators = [Coordinatable]()
     var rootViewController: UIViewController = UIViewController()
-    
     var window: UIWindow?
 
     init(window: UIWindow) {
@@ -29,18 +28,11 @@ class LoginCoordinator: Coordinatable {
             let loginViewController: LoginViewController = storyboard.viewController()
             loginViewController.coordinator = self
             rootViewController = loginViewController
-        } else if case .mainMapView = destination {
-            let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
-            let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
-            let mainTabBarViewController = storyboard.instantiateViewController(identifier: "MainTabBarView") as UITabBarController
-            let viewController: MainMapViewController = storyboard.viewController()
-            mainTabBarViewController.viewControllers = [viewController]
-            mainMapNavigationController.viewControllers = [mainTabBarViewController]
-            window?.rootViewController = mainMapNavigationController
-
-            let coordinator = MainMapCoordinator(window: window!)
+        } else if case Destination.mainTabBar(.mainMapView) = destination {
+            let coordinator = TabBarCoordinator(window: window!)
             childCoordinators.append(coordinator)
-            viewController.coordinator = coordinator
+            coordinator.navigate(to: destination)
+            window?.rootViewController = coordinator.rootViewController
         }
     }
 }

@@ -30,7 +30,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_pin" id="Iaq-8f-Xsc"/>
                     <navigationItem key="navigationItem" title="On the Map" leftItemsSupplementBackButton="YES" id="KgI-qa-daB">
-                        <barButtonItem key="backBarButtonItem" title="LOGOUT" id="7Iw-bx-AwF"/>
+                        <barButtonItem key="backBarButtonItem" title="LOGOUT" style="plain" id="7Iw-bx-AwF">
+                            <connections>
+                                <action selector="onLogoutPressed:" destination="bGZ-YO-bP1" id="NJP-id-eCC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -41,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="937.68115942028987" y="126.5625"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tabbar View Controller-->
         <scene sceneID="dlc-95-6VU">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarView" id="tzZ-0F-luZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarView" id="tzZ-0F-luZ" customClass="MainTabbarViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Uve-L4-kPV"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eMs-dV-rCO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
