@@ -19,11 +19,6 @@ extension StoryboardIdentifiable where Self: UIViewController {
     }
 }
 
-enum StoryboardNames: String {
-    case login = "Main"
-    case mainMapView = "MainMapViewStoryboard"
-}
-
 extension UIViewController: StoryboardIdentifiable { }
 
 extension UIStoryboard {
