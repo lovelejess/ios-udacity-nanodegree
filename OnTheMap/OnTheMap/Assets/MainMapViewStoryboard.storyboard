@@ -30,9 +30,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_pin" id="Iaq-8f-Xsc"/>
                     <navigationItem key="navigationItem" title="On the Map" leftItemsSupplementBackButton="YES" id="KgI-qa-daB">
-                        <barButtonItem key="backBarButtonItem" title="LOGOUT" style="plain" id="7Iw-bx-AwF">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="UxJ-7r-AoJ">
                             <connections>
-                                <action selector="onLogoutPressed:" destination="bGZ-YO-bP1" id="NJP-id-eCC"/>
+                                <action selector="onLogoutPressed:" destination="bGZ-YO-bP1" id="JYq-f9-ybd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

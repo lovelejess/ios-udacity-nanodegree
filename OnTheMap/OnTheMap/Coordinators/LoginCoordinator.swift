@@ -29,6 +29,7 @@ class LoginCoordinator: Coordinatable {
             loginViewController.coordinator = self
             rootViewController = loginViewController
         } else if case Destination.mainTabBar(.mainMapView) = destination {
+            childCoordinators.append(self)
             let coordinator = TabBarCoordinator(window: window!)
             childCoordinators.append(coordinator)
             coordinator.navigate(to: destination)

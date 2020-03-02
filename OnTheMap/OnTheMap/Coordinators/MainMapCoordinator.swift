@@ -21,15 +21,13 @@ class MainMapCoordinator: Coordinatable {
     /// Responsible for navigating to the login screen initially which will then instantiate and rely on the `LoginCoordinator()`
     ///
     /// - Parameters:
-    ///     - destination:  A destination object with all possible screens
+    ///     - destination:  A destination ob`ject with all possible screens
     func navigate(to destination: Destination) {
         if case .logout = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .login, bundle: Bundle(for: type(of: self)))
             let loginViewController: LoginViewController = storyboard.viewController()
-            if let coordinator = childCoordinators.first(where: { $0 is LoginCoordinator }) as? LoginCoordinator {
-                window?.rootViewController = coordinator.rootViewController
-            }
-            rootViewController = loginViewController
+            loginViewController.coordinator = LoginCoordinator(window: window!)
+            window?.rootViewController = loginViewController
         } else if case .mainTabBar(.mainMapView) = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
