@@ -35,7 +35,9 @@ class MainMapCoordinator: Coordinatable {
         } else if case .addPin = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
             let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
-            navigationController?.pushViewController(viewController, animated: true)
+            rootViewController.present(viewController, animated: true) {
+                print("")
+            }
         } else if case .mainTabBar(.mainMapView) = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController

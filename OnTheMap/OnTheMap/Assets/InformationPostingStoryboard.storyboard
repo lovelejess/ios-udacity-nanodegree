@@ -14,13 +14,83 @@
                     <view key="view" contentMode="scaleToFill" id="Soj-Si-da0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNe-Mb-sr4">
+                                <rect key="frame" x="0.0" y="33" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="On The Map" id="4Hk-dm-vgq">
+                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="WAg-ta-BL4">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="Gw2-3Y-fiu" id="RWb-5r-2Sz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="w6E-z9-blF">
+                                <rect key="frame" x="0.0" y="137" width="414" height="67"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Aky-Ph-EMB">
+                                <rect key="frame" x="64" y="276" width="286" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8q-cD-d1G">
+                                        <rect key="frame" x="0.0" y="0.0" width="286" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="X4N-dA-aJ1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i2f-j3-fbf">
+                                        <rect key="frame" x="0.0" y="58" width="286" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="uvD-hk-wIf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-Xl-p7X">
+                                        <rect key="frame" x="0.0" y="116" width="286" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="9RN-XG-qim"/>
+                                        </constraints>
+                                        <state key="normal" title="FIND LOCATION">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFindLocationPressed:" destination="Gw2-3Y-fiu" eventType="touchUpInside" id="RTy-VK-wVn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w6E-z9-blF" firstAttribute="leading" secondItem="DBk-Nj-JLT" secondAttribute="leading" id="A43-Kz-n1K"/>
+                            <constraint firstItem="DBk-Nj-JLT" firstAttribute="trailing" secondItem="Aky-Ph-EMB" secondAttribute="trailing" constant="64" id="A4X-N8-fak"/>
+                            <constraint firstItem="LNe-Mb-sr4" firstAttribute="leading" secondItem="DBk-Nj-JLT" secondAttribute="leading" id="CE9-Pr-xp3"/>
+                            <constraint firstItem="LNe-Mb-sr4" firstAttribute="trailing" secondItem="DBk-Nj-JLT" secondAttribute="trailing" id="D7c-Yl-koo"/>
+                            <constraint firstItem="Aky-Ph-EMB" firstAttribute="leading" secondItem="DBk-Nj-JLT" secondAttribute="leading" constant="64" id="R2f-EN-vWz"/>
+                            <constraint firstItem="DBk-Nj-JLT" firstAttribute="top" secondItem="LNe-Mb-sr4" secondAttribute="top" constant="11" id="eUG-Wu-TiV"/>
+                            <constraint firstItem="w6E-z9-blF" firstAttribute="top" secondItem="LNe-Mb-sr4" secondAttribute="bottom" constant="60" id="jwR-O3-CdS"/>
+                            <constraint firstItem="DBk-Nj-JLT" firstAttribute="trailing" secondItem="w6E-z9-blF" secondAttribute="trailing" id="lLE-nW-M6a"/>
+                            <constraint firstItem="Aky-Ph-EMB" firstAttribute="top" secondItem="w6E-z9-blF" secondAttribute="bottom" constant="72" id="sd3-dE-huQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DBk-Nj-JLT"/>
                     </view>
+                    <connections>
+                        <outlet property="findLocationButton" destination="6ps-Xl-p7X" id="KZI-15-FXx"/>
+                        <outlet property="linkedInTextField" destination="i2f-j3-fbf" id="yyl-mG-H2M"/>
+                        <outlet property="locationTextField" destination="w8q-cD-d1G" id="FMG-MF-3Fj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Og1-ic-cUb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125" y="48"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_world" width="52" height="67"/>
+    </resources>
 </document>
