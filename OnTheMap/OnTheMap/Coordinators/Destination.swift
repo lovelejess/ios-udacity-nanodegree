@@ -9,6 +9,7 @@
 import Foundation
 
 enum Destination {
+    case addPin
     case login
     case logout
     case mainTabBar(Tab)

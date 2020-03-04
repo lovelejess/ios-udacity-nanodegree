@@ -14,6 +14,10 @@ class MainMapCoordinator: Coordinatable {
     var rootViewController: UIViewController = UIViewController()
     var window: UIWindow?
 
+    var navigationController: UINavigationController? {
+        return (rootViewController as? UINavigationController)
+    }
+
     init(window: UIWindow) {
         self.window = window
     }
@@ -28,12 +32,17 @@ class MainMapCoordinator: Coordinatable {
             let loginViewController: LoginViewController = storyboard.viewController()
             loginViewController.coordinator = LoginCoordinator(window: window!)
             window?.rootViewController = loginViewController
+        } else if case .addPin = destination {
+            let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
+            let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
+            navigationController?.pushViewController(viewController, animated: true)
         } else if case .mainTabBar(.mainMapView) = destination {
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
             let viewController: MainMapViewController = storyboard.instantiateViewController(identifier: "MainMapViewController") as MainMapViewController
             mainMapNavigationController.viewControllers = [viewController]
             rootViewController = mainMapNavigationController
+            print("rootViewController \(rootViewController)")
             viewController.coordinator = self
         }
     }

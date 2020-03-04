@@ -17,6 +17,10 @@ class MainMapViewController: UIViewController {
         coordinator?.navigate(to: .logout)
     }
 
+    @IBAction func onAddButtonPressed(_ sender: Any) {
+        coordinator?.navigate(to: .addPin)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self

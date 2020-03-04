@@ -35,6 +35,11 @@
                                 <action selector="onLogoutPressed:" destination="bGZ-YO-bP1" id="JYq-f9-ybd"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HvS-sH-csv">
+                            <connections>
+                                <action selector="onAddButtonPressed:" destination="bGZ-YO-bP1" id="gZf-g3-oZg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

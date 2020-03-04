@@ -11,4 +11,5 @@ import Foundation
 enum StoryboardNames: String {
     case login = "MainStoryboard"
     case mainMapView = "MainMapViewStoryboard"
+    case addPin = "InformationPostingStoryboard"
 }
