@@ -20,7 +20,6 @@
 		2EC44862240C5B6D00706FA9 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC44861240C5B6D00706FA9 /* MainTabBarViewController.swift */; };
 		2EC44864240CC57F00706FA9 /* InformationPostingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EC44863240CC57F00706FA9 /* InformationPostingStoryboard.storyboard */; };
 		2EC44866240CC5A400706FA9 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */; };
-		2EC44868240CC5CD00706FA9 /* InformationPostingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC44867240CC5CD00706FA9 /* InformationPostingCoordinator.swift */; };
 		2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1824030EF400A9CC8D /* AppDelegate.swift */; };
 		2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */; };
 		2ED79B2024030EF400A9CC8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED79B1E24030EF400A9CC8D /* MainStoryboard.storyboard */; };
@@ -67,7 +66,6 @@
 		2EC44861240C5B6D00706FA9 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		2EC44863240CC57F00706FA9 /* InformationPostingStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationPostingStoryboard.storyboard; sourceTree = "<group>"; };
 		2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
-		2EC44867240CC5CD00706FA9 /* InformationPostingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingCoordinator.swift; sourceTree = "<group>"; };
 		2ED79B1524030EF400A9CC8D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED79B1824030EF400A9CC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -260,7 +258,6 @@
 				2E2B3188240C16F100A7626A /* LoginCoordinator.swift */,
 				2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */,
 				2EC4485F240C58F900706FA9 /* TabBarCoordinator.swift */,
-				2EC44867240CC5CD00706FA9 /* InformationPostingCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -414,7 +411,6 @@
 				2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */,
 				2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */,
 				2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */,
-				2EC44868240CC5CD00706FA9 /* InformationPostingCoordinator.swift in Sources */,
 				2ED79B552403148000A9CC8D /* LinkTextView.swift in Sources */,
 				2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */,
 				2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */,
