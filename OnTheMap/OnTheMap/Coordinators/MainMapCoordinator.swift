@@ -12,6 +12,7 @@ import UIKit
 class MainMapCoordinator: Coordinatable {
     var childCoordinators = [Coordinatable]()
     var rootViewController: UIViewController = UIViewController()
+    var parentCoordinator: Coordinatable?
     var window: UIWindow?
 
     var navigationController: UINavigationController? {
@@ -27,18 +28,19 @@ class MainMapCoordinator: Coordinatable {
     /// - Parameters:
     ///     - destination:  A destination ob`ject with all possible screens
     func navigate(to destination: Destination) {
-        if case .logout = destination {
+        switch (destination) {
+        case .logout:
             let storyboard = UIStoryboard.storyboard(storyboardName: .login, bundle: Bundle(for: type(of: self)))
             let loginViewController: LoginViewController = storyboard.viewController()
             loginViewController.coordinator = LoginCoordinator(window: window!)
             window?.rootViewController = loginViewController
-        } else if case .addPin = destination {
+        case .addPin:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
             let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
             rootViewController.present(viewController, animated: true) {
                 print("")
             }
-        } else if case .mainTabBar(.mainMapView) = destination {
+        case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
             let viewController: MainMapViewController = storyboard.instantiateViewController(identifier: "MainMapViewController") as MainMapViewController
@@ -46,6 +48,8 @@ class MainMapCoordinator: Coordinatable {
             rootViewController = mainMapNavigationController
             print("rootViewController \(rootViewController)")
             viewController.coordinator = self
+        default:
+            parentCoordinator?.navigate(to: .logout)
         }
     }
 }

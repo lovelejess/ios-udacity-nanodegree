@@ -23,7 +23,19 @@ class AppCoordinator: Coordinatable {
     /// - Parameters:
     ///     - destination:  A destination object with all possible screens
     func navigate(to destination: Destination) {
-        if case .login = destination {
+        switch (destination) {
+        case .login:
+            guard let window = window else { fatalError("There should always be a uiWindow") }
+            if let coordinator = childCoordinators.first(where: { $0 is LoginCoordinator }) as? LoginCoordinator {
+                window.rootViewController = coordinator.rootViewController
+            } else {
+                let coordinator = LoginCoordinator(window: window)
+                childCoordinators.append(coordinator)
+                coordinator.parentCoordinator = self
+                coordinator.navigate(to: destination)
+                window.rootViewController = coordinator.rootViewController
+            }
+        default:
             guard let window = window else { fatalError("There should always be a uiWindow") }
             if let coordinator = childCoordinators.first(where: { $0 is LoginCoordinator }) as? LoginCoordinator {
                 window.rootViewController = coordinator.rootViewController

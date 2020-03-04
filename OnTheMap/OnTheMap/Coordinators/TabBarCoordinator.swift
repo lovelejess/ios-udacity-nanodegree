@@ -12,6 +12,7 @@ import UIKit
 class TabBarCoordinator: Coordinatable {
     var childCoordinators: [Coordinatable] = []
     var rootViewController = UIViewController()
+    var parentCoordinator: Coordinatable?
     var window: UIWindow?
 
     init(window: UIWindow) {
@@ -23,7 +24,8 @@ class TabBarCoordinator: Coordinatable {
     /// - Parameters:
     ///     - Destinaton:  A route object with all possible screens
     func navigate(to destination: Destination) {
-        if case Destination.mainTabBar(.mainMapView) = destination {
+        switch(destination) {
+        case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             guard let mainTabbarViewController = storyboard.instantiateInitialViewController() as? MainTabbarViewController else {
                 fatalError("MainTabbarViewController should always exist")
@@ -40,6 +42,8 @@ class TabBarCoordinator: Coordinatable {
             mainTabbarViewController.viewControllers = [mapController]
 
             rootViewController = mainTabbarViewController
+        default:
+            parentCoordinator?.navigate(to: destination)
         }
     }
 }

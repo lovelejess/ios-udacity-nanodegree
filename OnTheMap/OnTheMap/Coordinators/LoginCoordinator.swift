@@ -12,6 +12,7 @@ import UIKit
 class LoginCoordinator: Coordinatable {
     var childCoordinators = [Coordinatable]()
     var rootViewController: UIViewController = UIViewController()
+    var parentCoordinator: Coordinatable?
     var window: UIWindow?
 
     init(window: UIWindow) {
@@ -23,17 +24,21 @@ class LoginCoordinator: Coordinatable {
     /// - Parameters:
     ///     - destination:  A destination object with all possible screens
     func navigate(to destination: Destination) {
-        if case .login = destination {
+        switch destination {
+        case .login:
             let storyboard = UIStoryboard.storyboard(storyboardName: .login, bundle: Bundle(for: type(of: self)))
             let loginViewController: LoginViewController = storyboard.viewController()
             loginViewController.coordinator = self
             rootViewController = loginViewController
-        } else if case Destination.mainTabBar(.mainMapView) = destination {
+        case .mainTabBar(.mainMapView):
             childCoordinators.append(self)
             let coordinator = TabBarCoordinator(window: window!)
             childCoordinators.append(coordinator)
+            coordinator.parentCoordinator = self
             coordinator.navigate(to: destination)
             window?.rootViewController = coordinator.rootViewController
+        default:
+            parentCoordinator?.navigate(to: destination)
         }
     }
 }
