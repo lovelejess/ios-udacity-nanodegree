@@ -1,41 +1,50 @@
 //
-//  MainMapViewController.swift
+//  InformationLocationViewController.swift
 //  OnTheMap
 //
-//  Created by Jess Le on 2/29/20.
+//  Created by Jess Le on 3/14/20.
 //  Copyright © 2020 lovelejess. All rights reserved.
 //
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class MainMapViewController: UIViewController {
+class InformationLocationViewController: UIViewController {
     weak var coordinator: MainMapCoordinator?
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var submitButton: UIButton!
 
-    var viewModel: MapViewModel?
+    var viewModel: InformationPostingViewModel?
 
-    @IBAction func onLogoutPressed(_ sender: Any) {
-        coordinator?.navigate(to: .logout)
+    @IBAction func onSubmitButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            self.coordinator?.navigate(to: .root)
+            self.viewModel?.postStudentLocation()
+        }
     }
-
-    @IBAction func onAddButtonPressed(_ sender: Any) {
-        coordinator?.navigate(to: .addPin)
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         viewModel?.delegate = self
-        title = "On the Map"
-        reloadMap()
+        submitButton.layer.cornerRadius = 4
+        loadMap()
+    }
+    
+    func loadMap() {
+        guard let studentLocationRequest = viewModel?.studentLocationRequest else { return }
+        let location = CLLocation(latitude: studentLocationRequest.latitude, longitude: studentLocationRequest.longitude)
+        let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        centerMapOnLocation(location: location)
+        setRegion(location: location)
+        setDroppedPin(for: studentLocationRequest, coordinate: locationCoordinate2D)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        reloadMap()
-    }
-
+    
     private func centerMapOnLocation(location: CLLocation) {
         let home = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         mapView.setCenter(home, animated: true)
@@ -48,17 +57,16 @@ class MainMapViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
-    private func setDroppedPin(for studentLocation: StudentLocation, coordinate: CLLocationCoordinate2D) {
+    private func setDroppedPin(for studentLocation: StudentLocationRequest, coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = studentLocation.firstName
-        annotation.subtitle = studentLocation.mediaURL
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
 }
 
 // MARK: MKMapViewDelegate
-extension MainMapViewController: MKMapViewDelegate {
+extension InformationLocationViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
         if let annotationTitle = view.annotation?.subtitle as? String
@@ -70,27 +78,18 @@ extension MainMapViewController: MKMapViewDelegate {
         }
     }
 }
-
-// MARK: MapViewModelDelegate
-extension MainMapViewController: MapViewModelDelegate {
+// MARK: InformationLocationViewDelegate
+extension InformationLocationViewController: InformationLocationViewDelegate {
     func reloadMap() {
-        guard let studentLocation = viewModel?.studentLocations.first else { return }
-        let location = CLLocation(latitude: studentLocation.latitude, longitude: studentLocation.longitude)
+        guard let studentRequest = viewModel?.studentLocationRequest else { return }
+        let location = CLLocation(latitude: studentRequest.latitude, longitude: studentRequest.longitude)
         let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         centerMapOnLocation(location: location)
         setRegion(location: location)
-        setDroppedPin(for: studentLocation, coordinate: locationCoordinate2D)
+        setDroppedPin(for: studentRequest, coordinate: locationCoordinate2D)
     }
 }
 
-//// MARK: InformationPostingDelegate
-//extension MainMapViewController: InformationPostingDelegate {
-//    func refreshStudentLocations() {
-//        UdacityClient.getStudentsLocationByUniqueKey(for: "CDHfAy8sdp")  { (newStudentLocations, error) in
-//            let sortedLocations = newStudentLocations.sorted {
-//                $0.updatedAt > $1.updatedAt
-//            }
-//            self.viewModel?.studentLocations = sortedLocations
-//        }
-//    }
-//}
+protocol InformationLocationViewDelegate: class {
+    func reloadMap()
+}

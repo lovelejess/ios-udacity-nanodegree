@@ -7,19 +7,15 @@
 //
 
 import UIKit
-import MapKit
 
 class InformationPostingViewController: UIViewController {
 
+    weak var coordinator: MainMapCoordinator?
     @IBOutlet weak var linkedInTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!
-    
-    weak var mapViewDelegate: MapViewDelegate?
 
-    @IBAction func cancelButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    var viewModel: InformationPostingViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,26 +24,21 @@ class InformationPostingViewController: UIViewController {
     }
 
     @IBAction func onFindLocationPressed(_ sender: Any) {
-//        if let text = linkedInTextField.text, text.isEmpty {
+//        guard let _ = linkedInTextField.text, let _ = locationTextField.text else {
 //            let alert = UIAlertController(title: "Oops!", message: "Please provide a LinkedIn URL", preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
 //            present(alert, animated: true)
-//        } else {
-//            self.dismiss(animated: true) {
-//                // TODO: Convert text -> MKCoordinateRegion
-//                let chicago = CLLocation(latitude: 41.8781, longitude: 87.6298)
-//                self.mapViewDelegate?.reload(with: chicago)
-//            }
+//            return
 //        }
-        self.dismiss(animated: true) {
-            // TODO: Convert text -> MKCoordinateRegion
-            let johns = CLLocation(latitude: 42.086850, longitude: -87.997690)
-            self.mapViewDelegate?.reload(with: johns)
-        }
+
+        let uniqueKey =  "CDHfAy8sdp"
+        let firstName = "Zebra"
+        let lastName = "Test"
+        let address = "Los Angeles, CA"
+        let mediaURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+        viewModel?.createStudentLocationRequest(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mapString: address, mediaURL: mediaURL)
+
+        coordinator?.navigate(to: .showNewLocation)
     }
-}
-
-
-protocol MapViewDelegate: class {
-    func reload(with location: CLLocation)
 }

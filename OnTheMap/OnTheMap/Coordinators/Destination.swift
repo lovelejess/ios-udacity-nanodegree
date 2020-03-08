@@ -10,8 +10,10 @@ import Foundation
 
 enum Destination {
     case addPin
+    case showNewLocation
     case login
     case logout
+    case root
     case mainTabBar(Tab)
     
     enum Tab {

@@ -9,7 +9,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    // TODO: Strong reference okay??
     var coordinator: LoginCoordinator?
 
     @IBOutlet weak var emailTextField: UITextField!

@@ -37,20 +37,36 @@ class MainMapCoordinator: Coordinatable {
         case .addPin:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
             let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
-            if let mapViewController = rootViewController.children.first(where: { $0 is MainMapViewController }) as? MainMapViewController {
-                viewController.mapViewDelegate = mapViewController
+            viewController.coordinator = self
+
+            // Sets InformationPostingViewController informationPostingViewDelegate to the MainMapViewController if it has already navigated to it
+            if let _ = rootViewController.children.first(where: { $0 is MainMapViewController }) as? MainMapViewController {
+                let viewModel = InformationPostingViewModel()
+                viewController.viewModel = viewModel
             }
-            rootViewController.present(viewController, animated: true) {
-            print("")
+
+            navigationController?.pushViewController(viewController, animated: true)
+
+        case .showNewLocation:
+            let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
+            let viewController: InformationLocationViewController = storyboard.instantiateViewController(identifier: "InformationLocationViewController") as InformationLocationViewController
+            viewController.coordinator = self
+            let children = rootViewController.children
+            if let informationPostingViewController = children.last(where: { $0 is InformationPostingViewController }) as? InformationPostingViewController {
+                viewController.viewModel = informationPostingViewController.viewModel
             }
+            rootViewController.present(viewController, animated: true, completion: nil)
+
         case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
             let viewController: MainMapViewController = storyboard.instantiateViewController(identifier: "MainMapViewController") as MainMapViewController
+            viewController.viewModel = MapViewModel()
             mainMapNavigationController.viewControllers = [viewController]
             rootViewController = mainMapNavigationController
-            print("rootViewController \(rootViewController)")
             viewController.coordinator = self
+        case .root:
+            navigationController?.popToRootViewController(animated: false)
         default:
             parentCoordinator?.navigate(to: .logout)
         }

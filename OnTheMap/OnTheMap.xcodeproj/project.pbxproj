@@ -15,11 +15,18 @@
 		2E2B318B240C1AEA00A7626A /* MainMapViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */; };
 		2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B318C240C1B6000A7626A /* MainMapViewController.swift */; };
 		2E638110240C309A002BCFA6 /* StoryboardNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63810F240C309A002BCFA6 /* StoryboardNames.swift */; };
+		2EBB636124154EE3004DCDCE /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB636024154EE2004DCDCE /* StudentLocations.swift */; };
+		2EBB63642415814B004DCDCE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63632415814B004DCDCE /* MapViewModel.swift */; };
+		2EBB63662415E79A004DCDCE /* StudentLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */; };
+		2EBB63682415E87A004DCDCE /* StudentLocationPostingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */; };
 		2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */; };
 		2EC44860240C58F900706FA9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4485F240C58F900706FA9 /* TabBarCoordinator.swift */; };
 		2EC44862240C5B6D00706FA9 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC44861240C5B6D00706FA9 /* MainTabBarViewController.swift */; };
 		2EC44864240CC57F00706FA9 /* InformationPostingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EC44863240CC57F00706FA9 /* InformationPostingStoryboard.storyboard */; };
 		2EC44866240CC5A400706FA9 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */; };
+		2ECD4BF2241D4EA7006F5CC3 /* InformationPostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD4BF1241D4EA7006F5CC3 /* InformationPostingViewModel.swift */; };
+		2ECD4BF5241D4F12006F5CC3 /* InformationPostingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD4BF4241D4F12006F5CC3 /* InformationPostingDelegate.swift */; };
+		2ECD4BF7241D517C006F5CC3 /* InformationLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD4BF6241D517C006F5CC3 /* InformationLocationViewController.swift */; };
 		2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1824030EF400A9CC8D /* AppDelegate.swift */; };
 		2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */; };
 		2ED79B2024030EF400A9CC8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED79B1E24030EF400A9CC8D /* MainStoryboard.storyboard */; };
@@ -61,11 +68,18 @@
 		2E2B318A240C1AEA00A7626A /* MainMapViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainMapViewStoryboard.storyboard; sourceTree = "<group>"; };
 		2E2B318C240C1B6000A7626A /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		2E63810F240C309A002BCFA6 /* StoryboardNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNames.swift; sourceTree = "<group>"; };
+		2EBB636024154EE2004DCDCE /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		2EBB63632415814B004DCDCE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationRequest.swift; sourceTree = "<group>"; };
+		2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationPostingResponse.swift; sourceTree = "<group>"; };
 		2EC4485D240C408100706FA9 /* MainMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapCoordinator.swift; sourceTree = "<group>"; };
 		2EC4485F240C58F900706FA9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		2EC44861240C5B6D00706FA9 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		2EC44863240CC57F00706FA9 /* InformationPostingStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InformationPostingStoryboard.storyboard; sourceTree = "<group>"; };
 		2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		2ECD4BF1241D4EA7006F5CC3 /* InformationPostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewModel.swift; sourceTree = "<group>"; };
+		2ECD4BF4241D4F12006F5CC3 /* InformationPostingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingDelegate.swift; sourceTree = "<group>"; };
+		2ECD4BF6241D517C006F5CC3 /* InformationLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationLocationViewController.swift; sourceTree = "<group>"; };
 		2ED79B1524030EF400A9CC8D /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED79B1824030EF400A9CC8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ED79B1A24030EF400A9CC8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +143,23 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		2EBB636224158132004DCDCE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2EBB63632415814B004DCDCE /* MapViewModel.swift */,
+				2ECD4BF1241D4EA7006F5CC3 /* InformationPostingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2ECD4BF3241D4F01006F5CC3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2ECD4BF4241D4F12006F5CC3 /* InformationPostingDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		2ED79B0C24030EF400A9CC8D = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +183,8 @@
 		2ED79B1724030EF400A9CC8D /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				2ECD4BF3241D4F01006F5CC3 /* Protocol */,
+				2EBB636224158132004DCDCE /* ViewModel */,
 				2ED79B2924030EF700A9CC8D /* Info.plist */,
 				2ED79B4F2403118200A9CC8D /* Assets */,
 				2E638112240C3139002BCFA6 /* Config */,
@@ -198,6 +231,9 @@
 			children = (
 				2ED79B5A2403646200A9CC8D /* SessionRequest.swift */,
 				2ED79B5C240364BF00A9CC8D /* SessionResponse.swift */,
+				2EBB636024154EE2004DCDCE /* StudentLocations.swift */,
+				2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */,
+				2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +245,7 @@
 				2ED79B52240312E500A9CC8D /* LoginViewController.swift */,
 				2EC44861240C5B6D00706FA9 /* MainTabBarViewController.swift */,
 				2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */,
+				2ECD4BF6241D517C006F5CC3 /* InformationLocationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -389,15 +426,20 @@
 			files = (
 				2E638110240C309A002BCFA6 /* StoryboardNames.swift in Sources */,
 				2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */,
+				2EBB63662415E79A004DCDCE /* StudentLocationRequest.swift in Sources */,
 				2ED79B53240312E500A9CC8D /* LoginViewController.swift in Sources */,
 				2EC44866240CC5A400706FA9 /* InformationPostingViewController.swift in Sources */,
 				2EC44862240C5B6D00706FA9 /* MainTabBarViewController.swift in Sources */,
 				2ED79B5B2403646200A9CC8D /* SessionRequest.swift in Sources */,
 				2E2B3184240C11D200A7626A /* Destination.swift in Sources */,
+				2ECD4BF7241D517C006F5CC3 /* InformationLocationViewController.swift in Sources */,
 				2EC44860240C58F900706FA9 /* TabBarCoordinator.swift in Sources */,
+				2EBB636124154EE3004DCDCE /* StudentLocations.swift in Sources */,
 				2E2B3182240C113100A7626A /* AppCoordinator.swift in Sources */,
 				2E2B3189240C16F100A7626A /* LoginCoordinator.swift in Sources */,
+				2EBB63642415814B004DCDCE /* MapViewModel.swift in Sources */,
 				2ED79B2324030EF400A9CC8D /* OnTheMap.xcdatamodeld in Sources */,
+				2ECD4BF2241D4EA7006F5CC3 /* InformationPostingViewModel.swift in Sources */,
 				2ED79B5D240364BF00A9CC8D /* SessionResponse.swift in Sources */,
 				2ED79B59240318C500A9CC8D /* UdacityClient.swift in Sources */,
 				2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */,
@@ -405,6 +447,8 @@
 				2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */,
 				2ED79B552403148000A9CC8D /* LinkTextView.swift in Sources */,
 				2ED79B1924030EF400A9CC8D /* AppDelegate.swift in Sources */,
+				2EBB63682415E87A004DCDCE /* StudentLocationPostingResponse.swift in Sources */,
+				2ECD4BF5241D4F12006F5CC3 /* InformationPostingDelegate.swift in Sources */,
 				2ED79B1B24030EF400A9CC8D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
