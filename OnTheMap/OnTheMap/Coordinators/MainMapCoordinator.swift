@@ -37,8 +37,11 @@ class MainMapCoordinator: Coordinatable {
         case .addPin:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
             let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
+            if let mapViewController = rootViewController.children.first(where: { $0 is MainMapViewController }) as? MainMapViewController {
+                viewController.mapViewDelegate = mapViewController
+            }
             rootViewController.present(viewController, animated: true) {
-                print("")
+            print("")
             }
         case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))

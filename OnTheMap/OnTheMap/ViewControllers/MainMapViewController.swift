@@ -27,17 +27,21 @@ class MainMapViewController: UIViewController {
         title = "On the Map"
         let location = CLLocation(latitude: 39.742920, longitude: -105.0631619)
         let home = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        mapView.setCenter(home, animated: true)
         centerMapOnLocation(location: location)
-
+        setRegion(location: location)
         setDroppedPin(for: home)
     }
 
     func centerMapOnLocation(location: CLLocation) {
+        let home = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        mapView.setCenter(home, animated: true)
+    }
+    
+    func setRegion(location: CLLocation) {
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-      mapView.setRegion(coordinateRegion, animated: true)
+                                                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 
     func setDroppedPin(for location: CLLocationCoordinate2D) {
@@ -59,5 +63,14 @@ extension MainMapViewController: MKMapViewDelegate {
                 UIApplication.shared.open(url)
             }
         }
+    }
+}
+
+extension MainMapViewController: MapViewDelegate {
+    func reload(with location: CLLocation) {
+        centerMapOnLocation(location: location)
+        setRegion(location: location)
+        let home = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        setDroppedPin(for: home)
     }
 }

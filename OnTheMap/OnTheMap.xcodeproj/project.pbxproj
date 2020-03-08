@@ -162,7 +162,6 @@
 				2ED79B57240318A400A9CC8D /* Networking */,
 				2ED79B4B2403112D00A9CC8D /* View */,
 				2ED79B4D2403113900A9CC8D /* ViewControllers */,
-				2ED79B4E2403114400A9CC8D /* ViewModel */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -212,13 +211,6 @@
 				2EC44865240CC5A400706FA9 /* InformationPostingViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		2ED79B4E2403114400A9CC8D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2ED79B4F2403118200A9CC8D /* Assets */ = {
