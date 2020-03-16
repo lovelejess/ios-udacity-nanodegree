@@ -10,7 +10,7 @@ import UIKit
 
 class InformationPostingViewController: UIViewController {
 
-    weak var coordinator: MainMapCoordinator?
+    weak var coordinator: Coordinatable?
     @IBOutlet weak var linkedInTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!

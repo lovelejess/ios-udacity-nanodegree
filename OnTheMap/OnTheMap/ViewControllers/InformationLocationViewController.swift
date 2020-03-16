@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class InformationLocationViewController: UIViewController {
-    weak var coordinator: MainMapCoordinator?
+    weak var coordinator: Coordinatable?
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
 

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol Coordinatable {
+protocol Coordinatable: class {
     var childCoordinators: [Coordinatable] { get set }
     var rootViewController: UIViewController { get set }
 

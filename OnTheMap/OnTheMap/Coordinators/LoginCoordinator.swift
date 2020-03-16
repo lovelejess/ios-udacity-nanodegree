@@ -30,6 +30,11 @@ class LoginCoordinator: Coordinatable {
             let loginViewController: LoginViewController = storyboard.viewController()
             loginViewController.coordinator = self
             rootViewController = loginViewController
+        case .logout:
+            let storyboard = UIStoryboard.storyboard(storyboardName: .login, bundle: Bundle(for: type(of: self)))
+            let loginViewController: LoginViewController = storyboard.viewController()
+            loginViewController.coordinator = LoginCoordinator(window: window!)
+            window?.rootViewController = loginViewController
         case .mainTabBar(.mainMapView):
             childCoordinators.append(self)
             let coordinator = TabBarCoordinator(window: window!)

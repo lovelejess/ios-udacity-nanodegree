@@ -11,13 +11,24 @@ import UIKit
 class StudentInformationViewController: UIViewController {
     let cellReuseIdentifier = "StudentInfoCell"
 
+    @IBAction func onLogoutButtonPressed(_ sender: Any) {
+        coordinator?.navigate(to: .logout)
+    }
+    
+    @IBAction func onAddPinButtonPressed(_ sender: Any) {
+        coordinator?.navigate(to: .addPin)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
 
     var viewModel: StudentInformationViewModel?
     var coordinator: StudentInformationCoordinator?
+    weak var delegate: StudentInformationDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.delegate = self
+        viewModel?.getStudentData()
     }
 }
 
@@ -34,15 +45,36 @@ extension StudentInformationViewController: UITableViewDataSource {
 
         let student = students[(indexPath as NSIndexPath).row]
 
-        cell.textLabel?.text = student
-        cell.detailTextLabel?.text = student
+        cell.textLabel?.text = student.firstName + " " + student.lastName
+        cell.detailTextLabel?.text = student.mediaURL
 
         return cell
     }
 }
 
-class StudentInformationViewModel {
-
-    var students: [String] = ["Student"]
+extension StudentInformationViewController: StudentInformationDelegate {
+    func reloadData() {
+        self.tableView.reloadData()
+    }
 }
 
+class StudentInformationViewModel {
+
+    var students = [Student]() {
+        didSet {
+            delegate?.reloadData()
+        }
+    }
+
+    var delegate: StudentInformationDelegate?
+
+    func getStudentData() {
+        UdacityClient.getStudentsLocationByOrder(for: "-updatedAt") { (students, error) in
+            self.students = students
+        }
+    }
+}
+
+protocol StudentInformationDelegate: class {
+    func reloadData()
+}
