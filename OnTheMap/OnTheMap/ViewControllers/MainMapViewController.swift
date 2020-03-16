@@ -48,7 +48,7 @@ class MainMapViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
-    private func setDroppedPin(for studentLocation: StudentLocation, coordinate: CLLocationCoordinate2D) {
+    private func setDroppedPin(for studentLocation: Student, coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = studentLocation.firstName
         annotation.subtitle = studentLocation.mediaURL

@@ -12,7 +12,7 @@ import CoreLocation
 
 class MapViewModel {
     var delegate: MapViewModelDelegate?
-    var studentLocations = [StudentLocation]() {
+    var studentLocations = [Student]() {
         didSet {
             delegate?.reloadMap()
         }
@@ -22,7 +22,7 @@ class MapViewModel {
         UdacityClient.getStudentsLocationByOrder(for: "-updatedAt", completion: self.setStudentsLocation(locations:error:))
     }
 
-    private func setStudentsLocation(locations: [StudentLocation], error: Error?) {
+    private func setStudentsLocation(locations: [Student], error: Error?) {
         studentLocations = locations
     }
 }

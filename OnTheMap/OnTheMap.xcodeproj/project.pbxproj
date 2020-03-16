@@ -14,7 +14,7 @@
 		2E2B3189240C16F100A7626A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3188240C16F100A7626A /* LoginCoordinator.swift */; };
 		2E2B318D240C1B6000A7626A /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B318C240C1B6000A7626A /* MainMapViewController.swift */; };
 		2E638110240C309A002BCFA6 /* StoryboardNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E63810F240C309A002BCFA6 /* StoryboardNames.swift */; };
-		2EBB636124154EE3004DCDCE /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB636024154EE2004DCDCE /* StudentLocations.swift */; };
+		2EBB636124154EE3004DCDCE /* Students.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB636024154EE2004DCDCE /* Students.swift */; };
 		2EBB63642415814B004DCDCE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63632415814B004DCDCE /* MapViewModel.swift */; };
 		2EBB63662415E79A004DCDCE /* StudentLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */; };
 		2EBB63682415E87A004DCDCE /* StudentLocationPostingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */; };
@@ -70,7 +70,7 @@
 		2E2B3188240C16F100A7626A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		2E2B318C240C1B6000A7626A /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		2E63810F240C309A002BCFA6 /* StoryboardNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNames.swift; sourceTree = "<group>"; };
-		2EBB636024154EE2004DCDCE /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		2EBB636024154EE2004DCDCE /* Students.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Students.swift; sourceTree = "<group>"; };
 		2EBB63632415814B004DCDCE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationRequest.swift; sourceTree = "<group>"; };
 		2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationPostingResponse.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 			children = (
 				2ED79B5A2403646200A9CC8D /* SessionRequest.swift */,
 				2ED79B5C240364BF00A9CC8D /* SessionResponse.swift */,
-				2EBB636024154EE2004DCDCE /* StudentLocations.swift */,
+				2EBB636024154EE2004DCDCE /* Students.swift */,
 				2EBB63652415E79A004DCDCE /* StudentLocationRequest.swift */,
 				2EBB63672415E87A004DCDCE /* StudentLocationPostingResponse.swift */,
 			);
@@ -444,7 +444,7 @@
 				2E2B3184240C11D200A7626A /* Destination.swift in Sources */,
 				2ECD4BF7241D517C006F5CC3 /* InformationLocationViewController.swift in Sources */,
 				2EC44860240C58F900706FA9 /* TabBarCoordinator.swift in Sources */,
-				2EBB636124154EE3004DCDCE /* StudentLocations.swift in Sources */,
+				2EBB636124154EE3004DCDCE /* Students.swift in Sources */,
 				2ECD4BFD241F1BED006F5CC3 /* StudentInformationCoordinator.swift in Sources */,
 				2E2B3182240C113100A7626A /* AppCoordinator.swift in Sources */,
 				2E2B3189240C16F100A7626A /* LoginCoordinator.swift in Sources */,

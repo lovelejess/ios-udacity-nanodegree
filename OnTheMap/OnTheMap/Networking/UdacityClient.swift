@@ -50,8 +50,8 @@ class UdacityClient {
         }
     }
 
-    class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
-        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocation.url, responseType: StudentLocations.self) { (response, error) in
+    class func getStudentsLocation(completion: @escaping ([Student], Error?) -> Void) {
+        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocation.url, responseType: Students.self) { (response, error) in
             if let response = response {
                 completion(response.results, nil)
             }
@@ -61,8 +61,8 @@ class UdacityClient {
         }
     }
     
-    class func getStudentsLocationByUniqueKey(for key: String, completion: @escaping ([StudentLocation], Error?) -> Void) {
-        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocationByKey(key).url, responseType: StudentLocations.self) { (response, error) in
+    class func getStudentsLocationByUniqueKey(for key: String, completion: @escaping ([Student], Error?) -> Void) {
+        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocationByKey(key).url, responseType: Students.self) { (response, error) in
             if let response = response {
                 completion(response.results, nil)
             }
@@ -72,8 +72,8 @@ class UdacityClient {
         }
     }
     
-    class func getStudentsLocationByOrder(for order: String, completion: @escaping ([StudentLocation], Error?) -> Void) {
-        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocationByOrder(order).url, responseType: StudentLocations.self) { (response, error) in
+    class func getStudentsLocationByOrder(for order: String, completion: @escaping ([Student], Error?) -> Void) {
+        NetworkingRequester.taskForGETRequest(url: Endpoints.studentsLocationByOrder(order).url, responseType: Students.self) { (response, error) in
             if let response = response {
                 completion(response.results, nil)
             }
