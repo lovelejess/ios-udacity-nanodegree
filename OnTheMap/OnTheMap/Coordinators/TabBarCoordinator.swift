@@ -38,8 +38,14 @@ class TabBarCoordinator: Coordinatable {
 
             childCoordinators.append(mapCoordinator)
 
+            let studentInformationCoordinator = StudentInformationCoordinator(window: window!)
+            studentInformationCoordinator.navigate(to: Destination.mainTabBar(.studentInfo))
+
+            childCoordinators.append(studentInformationCoordinator)
+
             let mapController = mapCoordinator.rootViewController
-            mainTabbarViewController.viewControllers = [mapController]
+            let studentInfoController = studentInformationCoordinator.rootViewController
+            mainTabbarViewController.viewControllers = [mapController, studentInfoController]
 
             rootViewController = mainTabbarViewController
         default:

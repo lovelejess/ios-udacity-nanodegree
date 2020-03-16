@@ -13,6 +13,4 @@ class MainTabbarViewController: UITabBarController {
     weak var coordinator: TabBarCoordinator?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

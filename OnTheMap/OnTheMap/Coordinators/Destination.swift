@@ -18,6 +18,7 @@ enum Destination {
     
     enum Tab {
         case mainMapView
+        case studentInfo
     }
 }
 
