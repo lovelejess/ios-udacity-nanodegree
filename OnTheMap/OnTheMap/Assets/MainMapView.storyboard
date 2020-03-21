@@ -28,18 +28,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7A3-3p-tI3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_pin" id="Iaq-8f-Xsc"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="Iaq-8f-Xsc"/>
                     <navigationItem key="navigationItem" title="On the Map" leftItemsSupplementBackButton="YES" id="KgI-qa-daB">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="UxJ-7r-AoJ">
                             <connections>
                                 <action selector="onLogoutPressed:" destination="bGZ-YO-bP1" id="JYq-f9-ybd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HvS-sH-csv">
-                            <connections>
-                                <action selector="onAddButtonPressed:" destination="bGZ-YO-bP1" id="gZf-g3-oZg"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="HvS-sH-csv">
+                                <connections>
+                                    <action selector="onAddButtonPressed:" destination="bGZ-YO-bP1" id="gZf-g3-oZg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="icon_refresh" id="JCk-iG-5Cg">
+                                <connections>
+                                    <action selector="onRefreshButtonPressed:" destination="bGZ-YO-bP1" id="Wq9-8p-QGJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -86,7 +93,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_pin" width="24" height="24"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="mappin.and.ellipse" catalog="system" width="58" height="64"/>
     </resources>
 </document>

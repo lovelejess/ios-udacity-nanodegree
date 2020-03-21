@@ -24,6 +24,10 @@ class MainMapViewController: UIViewController {
         coordinator?.navigate(to: .addPin)
     }
 
+    @IBAction func onRefreshButtonPressed(_ sender: Any) {
+        reloadMap()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self

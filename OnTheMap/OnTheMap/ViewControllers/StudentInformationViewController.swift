@@ -19,6 +19,10 @@ class StudentInformationViewController: UIViewController {
         coordinator?.navigate(to: .addPin)
     }
     
+    @IBAction func onRefreshButtonPressed(_ sender: Any) {
+        reloadData()
+    }
+    
     @IBOutlet weak var tableView: UITableView!
 
     var viewModel: StudentInformationViewModel?
