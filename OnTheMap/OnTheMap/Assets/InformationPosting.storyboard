@@ -19,10 +19,26 @@
                                 <rect key="frame" x="0.0" y="116" width="414" height="67"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Aky-Ph-EMB">
-                                <rect key="frame" x="64" y="255" width="286" height="160"/>
+                                <rect key="frame" x="64" y="255" width="286" height="276"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8q-cD-d1G">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zVI-yd-ChX">
                                         <rect key="frame" x="0.0" y="0.0" width="286" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="b0L-1p-2sA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bR0-3E-XnP">
+                                        <rect key="frame" x="0.0" y="58" width="286" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="X4r-yj-ap1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8q-cD-d1G">
+                                        <rect key="frame" x="0.0" y="116" width="286" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="X4N-dA-aJ1"/>
                                         </constraints>
@@ -30,7 +46,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i2f-j3-fbf">
-                                        <rect key="frame" x="0.0" y="58" width="286" height="44"/>
+                                        <rect key="frame" x="0.0" y="174" width="286" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="uvD-hk-wIf"/>
                                         </constraints>
@@ -38,7 +54,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-Xl-p7X">
-                                        <rect key="frame" x="0.0" y="116" width="286" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="286" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="9RN-XG-qim"/>
@@ -66,6 +82,8 @@
                     </view>
                     <connections>
                         <outlet property="findLocationButton" destination="6ps-Xl-p7X" id="KZI-15-FXx"/>
+                        <outlet property="firstNameTextField" destination="zVI-yd-ChX" id="6mI-SH-TW7"/>
+                        <outlet property="lastNameTextField" destination="bR0-3E-XnP" id="QqT-5N-EnW"/>
                         <outlet property="linkedInTextField" destination="i2f-j3-fbf" id="yyl-mG-H2M"/>
                         <outlet property="locationTextField" destination="w8q-cD-d1G" id="FMG-MF-3Fj"/>
                     </connections>

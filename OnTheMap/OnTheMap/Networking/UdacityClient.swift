@@ -35,17 +35,16 @@ class UdacityClient {
         }
     }
 
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        let credentials = Credentials(username: "jessicale90@gmail.com", password: "Gmpuf4qx")
+    class func login(username: String, password: String, completion: @escaping (SessionResponse?, Error?) -> Void) {
+        let credentials = Credentials(username: username, password: password)
         let body = SessionRequest(udacity: credentials)
 
         NetworkingRequester.taskForPOSTRequest(url: Endpoints.getSessionID.url, responseType: SessionResponse.self, body: body) { (response, error) in
             if let response = response {
-                Auth.sessionId = response.session.id
-                completion(true, nil)
+                completion(response, nil)
             }
             else {
-                completion(false, error)
+                completion(nil, error)
             }
         }
     }

@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     @IBAction func onLoginButtonTapped(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        UdacityClient.login(username: email, password: password, completion: self.handleLogin(isSuccessful:error:))
+        UdacityClient.login(username: email, password: password, completion: self.handleLogin(sessionResponse:error:))
     }
 
     override func viewDidLoad() {
@@ -30,16 +30,15 @@ class LoginViewController: UIViewController {
         signUpLink.stylizeLinks(text: "Don't have an account? Sign Up", links: ["Sign Up" : "https://auth.udacity.com/sign-up"])
     }
     
-    func handleLogin(isSuccessful: Bool, error: Error?) {
-        coordinator?.navigate(to: .mainTabBar(.mainMapView))
-        
-        // TODO: Add this back in
-//        if isSuccessful {
-//            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
-//            coordinator?.navigate(to: .mainMapView)
-//        } else {
-//            print("Error: Unable to login")
-//        }
+    func handleLogin(sessionResponse: SessionResponse?, error: Error?) {
+        if (sessionResponse != nil) {
+            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
+            coordinator?.navigate(to: .mainTabBar(.mainMapView))
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "Unable to login!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
     }
 
 }

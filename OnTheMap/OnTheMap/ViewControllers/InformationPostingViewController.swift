@@ -13,6 +13,8 @@ class InformationPostingViewController: UIViewController {
     weak var coordinator: Coordinatable?
     @IBOutlet weak var linkedInTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!
 
     var viewModel: InformationPostingViewModel?
@@ -24,20 +26,14 @@ class InformationPostingViewController: UIViewController {
     }
 
     @IBAction func onFindLocationPressed(_ sender: Any) {
-//        guard let _ = linkedInTextField.text, let _ = locationTextField.text else {
-//            let alert = UIAlertController(title: "Oops!", message: "Please provide a LinkedIn URL", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//            present(alert, animated: true)
-//            return
-//        }
+        guard let linkedInURL = linkedInTextField.text, let location = locationTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text else {
+            let alert = UIAlertController(title: "Oops!", message: "Please fill in all fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            return
+        }
 
-        let uniqueKey =  "CDHfAy8sdp"
-        let firstName = "Zebra"
-        let lastName = "Test"
-        let address = "Los Angeles, CA"
-        let mediaURL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-
-        viewModel?.createStudentLocationRequest(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mapString: address, mediaURL: mediaURL)
+        viewModel?.createStudentLocationRequest(uniqueKey:  UUID().uuidString, firstName: firstName, lastName: lastName, mapString: location, mediaURL: linkedInURL)
 
         coordinator?.navigate(to: .showNewLocation)
     }
