@@ -24,7 +24,7 @@ class UdacityClient {
         var stringValue: String {
             switch self {
             case .getSessionID: return Endpoints.base + "session"
-            case .studentsLocation: return Endpoints.base + "StudentLocation"
+            case .studentsLocation: return Endpoints.base + "StudentLocation?limit=100"
             case .studentsLocationByKey(let key): return Endpoints.base + "StudentLocation?uniqueKey=\(key)"
             case .studentsLocationByOrder(let order): return Endpoints.base + "StudentLocation?order=\(order)"
             }

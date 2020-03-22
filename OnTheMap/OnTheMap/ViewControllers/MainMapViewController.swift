@@ -40,18 +40,6 @@ class MainMapViewController: UIViewController {
         reloadMap()
     }
 
-    private func centerMapOnLocation(location: CLLocation) {
-        let home = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        mapView.setCenter(home, animated: true)
-    }
-    
-    private func setRegion(location: CLLocation) {
-        let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                 latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-
     private func setDroppedPin(for studentLocation: Student, coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = studentLocation.firstName
@@ -78,23 +66,12 @@ extension MainMapViewController: MKMapViewDelegate {
 // MARK: MapViewModelDelegate
 extension MainMapViewController: MapViewModelDelegate {
     func reloadMap() {
-        guard let studentLocation = viewModel?.studentLocations.first else { return }
-        let location = CLLocation(latitude: studentLocation.latitude, longitude: studentLocation.longitude)
-        let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        centerMapOnLocation(location: location)
-        setRegion(location: location)
-        setDroppedPin(for: studentLocation, coordinate: locationCoordinate2D)
+        guard let studentLocations = viewModel?.studentLocations else { return }
+
+        for studentLocation in studentLocations {
+            let location = CLLocation(latitude: studentLocation.latitude, longitude: studentLocation.longitude)
+            let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            setDroppedPin(for: studentLocation, coordinate: locationCoordinate2D)
+        }
     }
 }
-
-//// MARK: InformationPostingDelegate
-//extension MainMapViewController: InformationPostingDelegate {
-//    func refreshStudentLocations() {
-//        UdacityClient.getStudentsLocationByUniqueKey(for: "CDHfAy8sdp")  { (newStudentLocations, error) in
-//            let sortedLocations = newStudentLocations.sorted {
-//                $0.updatedAt > $1.updatedAt
-//            }
-//            self.viewModel?.studentLocations = sortedLocations
-//        }
-//    }
-//}

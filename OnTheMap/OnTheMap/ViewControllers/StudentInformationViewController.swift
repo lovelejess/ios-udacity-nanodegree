@@ -20,7 +20,7 @@ class StudentInformationViewController: UIViewController {
     }
     
     @IBAction func onRefreshButtonPressed(_ sender: Any) {
-        reloadData()
+        viewModel?.getStudentData()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,6 +32,10 @@ class StudentInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         viewModel?.getStudentData()
     }
 }
@@ -57,20 +61,20 @@ extension StudentInformationViewController: UITableViewDataSource {
 }
 
 extension StudentInformationViewController: StudentInformationDelegate {
-    func reloadData() {
+    func reloadTableView() {
         self.tableView.reloadData()
     }
 }
 
 class StudentInformationViewModel {
+    
+    var delegate: StudentInformationDelegate?
 
     var students = [Student]() {
         didSet {
-            delegate?.reloadData()
+            delegate?.reloadTableView()
         }
     }
-
-    var delegate: StudentInformationDelegate?
 
     func getStudentData() {
         UdacityClient.getStudentsLocationByOrder(for: "-updatedAt") { (students, error) in
@@ -80,5 +84,5 @@ class StudentInformationViewModel {
 }
 
 protocol StudentInformationDelegate: class {
-    func reloadData()
+    func reloadTableView()
 }
