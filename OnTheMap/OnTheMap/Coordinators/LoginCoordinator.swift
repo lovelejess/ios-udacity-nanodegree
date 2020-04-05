@@ -19,7 +19,7 @@ class LoginCoordinator: Coordinatable {
         self.window = window
     }
 
-    /// Responsible for navigating to the login screen initially which will then instantiate and rely on the `LoginCoordinator()`
+    /// Responsible for navigating to the main tab bar screen initially which will then instantiate and rely on the `TabBarCoordinator()` for further navigation actions
     ///
     /// - Parameters:
     ///     - destination:  A destination object with all possible screens

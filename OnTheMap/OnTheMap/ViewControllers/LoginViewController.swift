@@ -17,28 +17,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     @IBAction func onLoginButtonTapped(_ sender: Any) {
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            let alert = UIAlertController(title: "Error", message: "Please enter both email and password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            return
+        }
         UdacityClient.login(username: email, password: password, completion: self.handleLogin(sessionResponse:error:))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         loginButton.layer.cornerRadius = 4
         signUpLink.stylizeLinks(text: "Don't have an account? Sign Up", links: ["Sign Up" : "https://auth.udacity.com/sign-up"])
     }
     
-    func handleLogin(sessionResponse: SessionResponse?, error: Error?) {
+    func handleLogin(sessionResponse: SessionResponse?, error: ErrorResponse?) {
         if (sessionResponse != nil) {
-            print("Auth session ID: \(UdacityClient.Auth.sessionId)")
+            UserDefaults.standard.set(sessionResponse?.account.key, forKey: "key")
             coordinator?.navigate(to: .mainTabBar(.mainMapView))
         } else {
-            let alert = UIAlertController(title: "Oops!", message: "Unable to login!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: error?.errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             present(alert, animated: true)
         }
     }
-
 }

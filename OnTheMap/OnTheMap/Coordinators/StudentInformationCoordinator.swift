@@ -27,30 +27,30 @@ class StudentInformationCoordinator: Coordinatable {
         switch (destination) {
         case .mainTabBar(.studentInfo):
             let storyboard = UIStoryboard.storyboard(storyboardName: .studentInfo, bundle: Bundle(for: type(of: self)))
-            let studentInfoNavigationController = storyboard.instantiateViewController(identifier: "StudentInformationNavController") as UINavigationController
-            let viewController: StudentInformationViewController = storyboard.instantiateViewController(identifier: "StudentInformationViewController") as StudentInformationViewController
+            let studentInfoNavigationController = storyboard.viewController(for: .studentInformationNavController) as UINavigationController
+            let viewController = storyboard.viewController(for: .studentInformationViewController) as StudentInformationViewController
             viewController.viewModel = StudentInformationViewModel()
             viewController.coordinator = self
             studentInfoNavigationController.viewControllers = [viewController]
             rootViewController = studentInfoNavigationController
-            
+
         case .addPin:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
-            let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
+            let viewController = storyboard.viewController(for: .informationPostingViewController) as InformationPostingViewController
             viewController.coordinator = self
-
-            if let _ = rootViewController.children.first(where: { $0 is StudentInformationViewController }) as? StudentInformationViewController {
-                let viewModel = InformationPostingViewModel()
-                viewController.viewModel = viewModel
-            }
+            let viewModel = InformationPostingViewModel()
+            viewController.viewModel = viewModel
 
             navigationController?.pushViewController(viewController, animated: true)
 
         case .showNewLocation:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
-            let viewController: InformationLocationViewController = storyboard.instantiateViewController(identifier: "InformationLocationViewController") as InformationLocationViewController
+            let viewController = storyboard.viewController(for: .informationLocationViewController) as InformationLocationViewController
             viewController.coordinator = self
             let children = rootViewController.children
+
+            // Only set the InformationLocationViewController's view model, if we've already navigated to the InformationPostingViewController,
+            // so that they share the same View Model
             if let informationPostingViewController = children.last(where: { $0 is InformationPostingViewController }) as? InformationPostingViewController {
                 viewController.viewModel = informationPostingViewController.viewModel
             }

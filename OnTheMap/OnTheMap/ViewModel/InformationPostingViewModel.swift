@@ -9,28 +9,24 @@
 import Foundation
 import CoreLocation
 
+
 class InformationPostingViewModel {
-    weak var delegate: InformationLocationViewDelegate?
+
+    weak var delegate: InformationPostingDelegate?
 
     var studentLocationRequest: StudentLocationRequest? {
         didSet {
-            delegate?.reloadMap()
+            delegate?.refreshStudentLocations()
         }
     }
-
-    func postStudentLocation() {
+    typealias Handler = () -> Void
+    func postStudentLocation(completion: Handler?) {
         guard let request = self.studentLocationRequest else { return }
         UdacityClient.postStudentsLocation(body: request) { (response, error) in
-            if error == nil {
-                fatalError("oops unable to post student locations")
+            if error != nil {
+                guard let completion = completion else { return }
+                completion()
             }
-        }
-    }
-
-    func createStudentLocationRequest(uniqueKey: String, firstName: String, lastName: String, mapString: String, mediaURL: String) {
-        getCoordinateFrom(mapString: mapString) { coordinate, error in
-            guard let coordinate = coordinate else { print("unable to get coordinate \(String(describing: error))"); return }
-            self.studentLocationRequest = StudentLocationRequest(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, longitude: coordinate.longitude, latitude: coordinate.latitude)
         }
     }
 

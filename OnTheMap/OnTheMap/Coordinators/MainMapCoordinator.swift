@@ -23,7 +23,7 @@ class MainMapCoordinator: Coordinatable {
         self.window = window
     }
 
-    /// Responsible for navigating to the login screen initially which will then instantiate and rely on the `LoginCoordinator()`
+    /// Responsible for instantiating and pushing views to the stack by relying on its navigation controllers
     ///
     /// - Parameters:
     ///     - destination:  A destination ob`ject with all possible screens
@@ -31,22 +31,21 @@ class MainMapCoordinator: Coordinatable {
         switch (destination) {
         case .addPin:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
-            let viewController: InformationPostingViewController = storyboard.instantiateViewController(identifier: "InformationPostingViewController") as InformationPostingViewController
+            let viewController = storyboard.viewController(for: .informationPostingViewController) as InformationPostingViewController
             viewController.coordinator = self
-
-            // Sets InformationPostingViewController informationPostingViewDelegate to the MainMapViewController if it has already navigated to it
-            if let _ = rootViewController.children.first(where: { $0 is MainMapViewController }) as? MainMapViewController {
-                let viewModel = InformationPostingViewModel()
-                viewController.viewModel = viewModel
-            }
+            let viewModel = InformationPostingViewModel()
+            viewController.viewModel = viewModel
 
             navigationController?.pushViewController(viewController, animated: true)
 
         case .showNewLocation:
             let storyboard = UIStoryboard.storyboard(storyboardName: .addPin, bundle: Bundle(for: type(of: self)))
-            let viewController: InformationLocationViewController = storyboard.instantiateViewController(identifier: "InformationLocationViewController") as InformationLocationViewController
+            let viewController = storyboard.viewController(for: .informationLocationViewController) as InformationLocationViewController
             viewController.coordinator = self
             let children = rootViewController.children
+
+            // Only set the InformationLocationViewController's view model, if we've already navigated to the InformationPostingViewController,
+            // so that they share the same View Model
             if let informationPostingViewController = children.last(where: { $0 is InformationPostingViewController }) as? InformationPostingViewController {
                 viewController.viewModel = informationPostingViewController.viewModel
             }
@@ -54,8 +53,8 @@ class MainMapCoordinator: Coordinatable {
 
         case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
-            let mainMapNavigationController = storyboard.instantiateViewController(identifier: "MainMapNavigation") as UINavigationController
-            let viewController: MainMapViewController = storyboard.instantiateViewController(identifier: "MainMapViewController") as MainMapViewController
+            let mainMapNavigationController = storyboard.viewController(for: .mainMapNavigation) as UINavigationController
+            let viewController = storyboard.viewController(for: .mainMapViewController) as MainMapViewController
             viewController.viewModel = MapViewModel()
             mainMapNavigationController.viewControllers = [viewController]
             viewController.coordinator = self

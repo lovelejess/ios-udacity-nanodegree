@@ -33,4 +33,12 @@ extension UIStoryboard {
 
         return viewController
     }
+    
+    func viewController<T>(for name: ViewControllerNames) -> T {
+        guard let viewController = self.instantiateViewController(withIdentifier: name.rawValue) as? T else {
+            fatalError("Unable to instantiate ViewController with identifier \(name.rawValue)")
+        }
+
+        return viewController
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class StudentInformationViewController: UIViewController {
     let cellReuseIdentifier = "StudentInfoCell"
@@ -60,29 +61,29 @@ extension StudentInformationViewController: UITableViewDataSource {
     }
 }
 
+extension StudentInformationViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let students = viewModel?.students else { return }
+        let student = students[(indexPath as NSIndexPath).row]
+        guard let url = URL(string: student.mediaURL) else { return }
+
+        if UIApplication.shared.canOpenURL(url) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Error!", message: "Invalid URL provided", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
+
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
 extension StudentInformationViewController: StudentInformationDelegate {
     func reloadTableView() {
         self.tableView.reloadData()
     }
-}
-
-class StudentInformationViewModel {
-    
-    var delegate: StudentInformationDelegate?
-
-    var students = [Student]() {
-        didSet {
-            delegate?.reloadTableView()
-        }
-    }
-
-    func getStudentData() {
-        UdacityClient.getStudentsLocationByOrder(for: "-updatedAt") { (students, error) in
-            self.students = students
-        }
-    }
-}
-
-protocol StudentInformationDelegate: class {
-    func reloadTableView()
 }

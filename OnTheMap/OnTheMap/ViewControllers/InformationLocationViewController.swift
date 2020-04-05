@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SafariServices
 
 class InformationLocationViewController: UIViewController {
     weak var coordinator: Coordinatable?
@@ -19,7 +20,12 @@ class InformationLocationViewController: UIViewController {
     @IBAction func onSubmitButtonPressed(_ sender: Any) {
         self.dismiss(animated: true) {
             self.coordinator?.navigate(to: .root)
-            self.viewModel?.postStudentLocation()
+            self.viewModel?.postStudentLocation {
+                let alert = UIAlertController(title: "Error", message: "Unable to post new location. Please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+                return
+            }
         }
     }
     
@@ -33,10 +39,16 @@ class InformationLocationViewController: UIViewController {
         viewModel?.delegate = self
         submitButton.layer.cornerRadius = 4
         loadMap()
+        
     }
     
     func loadMap() {
-        guard let studentLocationRequest = viewModel?.studentLocationRequest else { return }
+        guard let studentLocationRequest = viewModel?.studentLocationRequest else {
+            let alert = UIAlertController(title: "Error", message: "Unable to retrieve students locations. Please refresh and try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            return
+        }
         let location = CLLocation(latitude: studentLocationRequest.latitude, longitude: studentLocationRequest.longitude)
         let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         centerMapOnLocation(location: location)
@@ -60,6 +72,7 @@ class InformationLocationViewController: UIViewController {
     private func setDroppedPin(for studentLocation: StudentLocationRequest, coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = studentLocation.firstName
+        annotation.subtitle = studentLocation.mediaURL
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
     }
@@ -71,25 +84,22 @@ extension InformationLocationViewController: MKMapViewDelegate {
     {
         if let annotationTitle = view.annotation?.subtitle as? String
         {
-            print("User tapped on annotation with subtitle: \(annotationTitle)")
-            if let url = URL(string: annotationTitle) {
-                UIApplication.shared.open(url)
+            guard let url = URL(string: annotationTitle) else { return }
+
+            if UIApplication.shared.canOpenURL(url) {
+                let safariViewController = SFSafariViewController(url: url)
+                present(safariViewController, animated: true)
+            } else {
+                let alert = UIAlertController(title: "Error!", message: "Invalid URL provided", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                present(alert, animated: true)
             }
         }
     }
 }
-// MARK: InformationLocationViewDelegate
-extension InformationLocationViewController: InformationLocationViewDelegate {
-    func reloadMap() {
-        guard let studentRequest = viewModel?.studentLocationRequest else { return }
-        let location = CLLocation(latitude: studentRequest.latitude, longitude: studentRequest.longitude)
-        let locationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        centerMapOnLocation(location: location)
-        setRegion(location: location)
-        setDroppedPin(for: studentRequest, coordinate: locationCoordinate2D)
-    }
-}
 
-protocol InformationLocationViewDelegate: class {
-    func reloadMap()
+extension InformationLocationViewController: InformationPostingDelegate {
+    func refreshStudentLocations() {
+        loadMap()
+    }
 }

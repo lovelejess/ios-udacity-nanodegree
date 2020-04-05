@@ -28,17 +28,20 @@ class TabBarCoordinator: Coordinatable {
         case .mainTabBar(.mainMapView):
             let storyboard = UIStoryboard.storyboard(storyboardName: .mainMapView, bundle: Bundle(for: type(of: self)))
             guard let mainTabbarViewController = storyboard.instantiateInitialViewController() as? MainTabbarViewController else {
-                fatalError("MainTabbarViewController should always exist")
+                print("MainTabbarViewController should always exist")
+                return
             }
 
             mainTabbarViewController.coordinator = self
 
             let mapCoordinator = MainMapCoordinator(window: window!)
+            mapCoordinator.parentCoordinator = self
             mapCoordinator.navigate(to: Destination.mainTabBar(.mainMapView))
 
             childCoordinators.append(mapCoordinator)
 
             let studentInformationCoordinator = StudentInformationCoordinator(window: window!)
+            studentInformationCoordinator.parentCoordinator = self
             studentInformationCoordinator.navigate(to: Destination.mainTabBar(.studentInfo))
 
             childCoordinators.append(studentInformationCoordinator)
