@@ -72,7 +72,7 @@ class InformationPostingViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if (isKeyboardDisplayed) {
+        if isKeyboardDisplayed {
             return
         }
         isKeyboardDisplayed = !self.isKeyboardDisplayed

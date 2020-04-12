@@ -9,5 +9,6 @@
 import Foundation
 
 protocol StudentInformationDelegate: class {
+    func displayError()
     func reloadTableView()
 }

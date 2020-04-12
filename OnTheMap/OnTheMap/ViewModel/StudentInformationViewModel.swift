@@ -14,6 +14,9 @@ class StudentInformationViewModel {
 
     var students = [StudentInformation]() {
         didSet {
+            if students.isEmpty {
+                delegate?.displayError()
+            }
             delegate?.reloadTableView()
         }
     }

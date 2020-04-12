@@ -36,7 +36,7 @@ class StudentInformationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         viewModel?.getStudentData()
     }
 }
@@ -85,5 +85,11 @@ extension StudentInformationViewController: UITableViewDelegate {
 extension StudentInformationViewController: StudentInformationDelegate {
     func reloadTableView() {
         self.tableView.reloadData()
+    }
+    
+    func displayError() {
+        let alert = UIAlertController(title: "Error!", message: "Unable to retrieve student information. Please try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
 }

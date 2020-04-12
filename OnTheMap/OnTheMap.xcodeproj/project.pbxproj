@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0DC6DD24436C89004192F4 /* NetworkingRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DC6DC24436C88004192F4 /* NetworkingRequester.swift */; };
+		2E0DC6DF24436CD3004192F4 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DC6DE24436CD3004192F4 /* ErrorResponse.swift */; };
 		2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B317F240C0F9200A7626A /* Coordinatable.swift */; };
 		2E2B3182240C113100A7626A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3181240C113100A7626A /* AppCoordinator.swift */; };
 		2E2B3184240C11D200A7626A /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2B3183240C11D200A7626A /* Destination.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0DC6DC24436C88004192F4 /* NetworkingRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRequester.swift; sourceTree = "<group>"; };
+		2E0DC6DE24436CD3004192F4 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		2E2B317F240C0F9200A7626A /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		2E2B3181240C113100A7626A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2E2B3183240C11D200A7626A /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
@@ -207,7 +211,7 @@
 				2ED79B4F2403118200A9CC8D /* Assets */,
 				2E638112240C3139002BCFA6 /* Config */,
 				2EE770E3240C0E630007598B /* Coordinators */,
-				2ED79B562403186C00A9CC8D /* Custom Components */,
+				2ED79B562403186C00A9CC8D /* CustomComponents */,
 				2E638111240C3122002BCFA6 /* Delegates */,
 				2ED79B2924030EF700A9CC8D /* Info.plist */,
 				2ED79B4C2403113200A9CC8D /* Model */,
@@ -286,18 +290,20 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		2ED79B562403186C00A9CC8D /* Custom Components */ = {
+		2ED79B562403186C00A9CC8D /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
 				2ED79B542403148000A9CC8D /* LinkTextView.swift */,
 			);
-			path = "Custom Components";
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 		2ED79B57240318A400A9CC8D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				2E0DC6DC24436C88004192F4 /* NetworkingRequester.swift */,
 				2ED79B58240318C500A9CC8D /* UdacityClient.swift */,
+				2E0DC6DE24436CD3004192F4 /* ErrorResponse.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -469,10 +475,12 @@
 				2ECD4BF2241D4EA7006F5CC3 /* InformationPostingViewModel.swift in Sources */,
 				2ED79B5D240364BF00A9CC8D /* SessionResponse.swift in Sources */,
 				2ED79B59240318C500A9CC8D /* UdacityClient.swift in Sources */,
+				2E0DC6DF24436CD3004192F4 /* ErrorResponse.swift in Sources */,
 				2EC4485E240C408100706FA9 /* MainMapCoordinator.swift in Sources */,
 				2EDE4DFE2431117F00D5159A /* MapViewModelDelegate.swift in Sources */,
 				2E73540F2431376C00A2C7EE /* SpinnerViewController.swift in Sources */,
 				2E2B3180240C0F9200A7626A /* Coordinatable.swift in Sources */,
+				2E0DC6DD24436C89004192F4 /* NetworkingRequester.swift in Sources */,
 				2EDE4E022431125500D5159A /* ViewControllerNames.swift in Sources */,
 				2E2B3187240C12E000A7626A /* StoryboardIdentifiable.swift in Sources */,
 				2ED79B552403148000A9CC8D /* LinkTextView.swift in Sources */,
