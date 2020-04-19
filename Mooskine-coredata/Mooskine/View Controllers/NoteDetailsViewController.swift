@@ -65,6 +65,6 @@ extension NoteDetailsViewController {
 extension NoteDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         note.text = textView.text
-        try? dataController.viewContext.save()
+        dataController.saveContext()
     }
 }
