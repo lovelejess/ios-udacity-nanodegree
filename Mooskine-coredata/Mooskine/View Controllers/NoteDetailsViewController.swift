@@ -14,6 +14,9 @@ class NoteDetailsViewController: UIViewController {
 
     /// The note being displayed and edited
     var note: Note!
+    
+    /// The Data Controller for managing Core Data
+    var dataController: DataController!
 
     /// A closure that is run when the user asks to delete the current note
     var onDelete: (() -> Void)?
@@ -62,5 +65,6 @@ extension NoteDetailsViewController {
 extension NoteDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         note.text = textView.text
+        try? dataController.viewContext.save()
     }
 }

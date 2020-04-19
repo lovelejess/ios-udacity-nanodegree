@@ -15,21 +15,26 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
 
     /// The `Notebook` objects being presented
     var notebooks: [Notebook] = []
-    var notes: [Note] = []
+    var notes = NSSet()
+
+    /// The Data Controller for managing Core Data
     var dataController: DataController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
-        
+
+        // Fetch all the notebooks from core data and sort by `creationDate`
         let fetchRequest: NSFetchRequest<Notebook> = Notebook.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
+
         if let result = try? dataController.viewContext.fetch(fetchRequest) {
             notebooks = result
             tableView.reloadData()
         }
+        
         updateEditButtonState()
     }
 
@@ -133,6 +138,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
 
         // Configure cell
         cell.nameLabel.text = aNotebook.name
+        notes = aNotebook.notes ?? NSSet()
         let pageString = notes.count == 1 ? "page" : "pages"
         cell.pageCountLabel.text = "\(notes.count) \(pageString)"
 
@@ -162,6 +168,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         if let vc = segue.destination as? NotesListViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 vc.notebook = notebook(at: indexPath)
+                vc.dataController = dataController
             }
         }
     }
