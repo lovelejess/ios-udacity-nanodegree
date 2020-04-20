@@ -28,14 +28,20 @@ class NoteDetailsViewController: UIViewController {
         return df
     }()
 
+    /// The accessory view used when displaying the keyboard
+    var keyboardToolbar: UIToolbar?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let creationDate = note.creationDate {
             navigationItem.title = dateFormatter.string(from: creationDate)
-            textView.attributedText = note.attributedText
         }
-        
+        textView.attributedText = note.attributedText
+
+        // keyboard toolbar configuration
+        configureToolbarItems()
+        configureTextViewInputAccessoryView()
     }
 
     @IBAction func deleteNote(sender: Any) {
@@ -66,5 +72,99 @@ extension NoteDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         note.attributedText = textView.attributedText
         dataController.saveContext()
+    }
+}
+
+// MARK: - Toolbar
+
+extension NoteDetailsViewController {
+    /// Returns an array of toolbar items. Used to configure the view controller's
+    /// `toolbarItems' property, and to configure an accessory view for the
+    /// text view's keyboard that also displays these items.
+    func makeToolbarItems() -> [UIBarButtonItem] {
+        let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped(sender:)))
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        space.width = 10
+        let bold = UIBarButtonItem(image: UIImage(named: "toolbar-bold"), style: .plain, target: self, action: #selector(boldTapped))
+        let red = UIBarButtonItem(image: UIImage(named: "toolbar-underline"), style: .plain, target: self, action: #selector(redTapped))
+        let cow = UIBarButtonItem(image: UIImage(named: "toolbar-cow"), style: .plain, target: self, action: #selector(cowTapped))
+
+        return [trash, space, bold, space, red, space, cow, space]
+    }
+    
+    @objc func boldTapped() {
+        let newText = textView.attributedText.mutableCopy() as? NSMutableAttributedString
+        newText?.addAttribute(.font, value: UIFont(name: "OpenSans-Bold", size: 22)!, range: textView.selectedRange)
+        let selectedTextRange = textView.selectedTextRange
+
+        textView.attributedText = newText
+        textView.selectedTextRange = selectedTextRange
+        note.attributedText = textView.attributedText
+        try? dataController.viewContext.save()
+    }
+    
+    @objc func redTapped() {
+        let newText = textView.attributedText.mutableCopy() as? NSMutableAttributedString
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor.red,
+                                                         .underlineStyle: 1,
+                                                         .underlineColor: UIColor.red]
+        newText?.addAttributes(attributes, range: textView.selectedRange)
+        let selectedTextRange = textView.selectedTextRange
+
+        textView.attributedText = newText
+        textView.selectedTextRange = selectedTextRange
+        note.attributedText = textView.attributedText
+        try? dataController.viewContext.save()
+    }
+    
+    @objc func cowTapped() {
+        let newText = textView.attributedText.mutableCopy() as? NSMutableAttributedString
+        
+        let selectedRange = textView.selectedRange
+        let selectedText = textView.attributedText.attributedSubstring(from: selectedRange)
+        let cowText = Pathifier.makeMutableAttributedString(for: selectedText, withFont: UIFont(name: "AvenirNext-Heavy", size: 56)!, withPatternImage: UIImage(named: "texture-cow")!)
+        newText?.replaceCharacters(in: selectedRange, with: cowText)
+        
+
+        textView.attributedText = newText
+        textView.selectedRange = NSMakeRange(selectedRange.location, 1)
+        
+        note.attributedText = textView.attributedText
+        try? dataController.viewContext.save()
+    }
+
+    /// Configure the current toolbar
+    func configureToolbarItems() {
+        toolbarItems = makeToolbarItems()
+        navigationController?.setToolbarHidden(false, animated: false)
+        }
+
+    /// Configure the text view's input accessory view -- this is the view that
+    /// appears above the keyboard. We'll return a toolbar populated with our
+    /// view controller's toolbar items, so that the toolbar functionality isn't
+    /// hidden when the keyboard appears
+    func configureTextViewInputAccessoryView() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        toolbar.items = makeToolbarItems()
+        textView.inputAccessoryView = toolbar
+    }
+
+    @IBAction func deleteTapped(sender: Any) {
+        showDeleteAlert()
+    }
+
+    // MARK: Helper methods for actions
+    private func showDeleteAlert() {
+        let alert = UIAlertController(title: "Delete Note?", message: "Are you sure you want to delete the current note?", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.onDelete?()
+        }
+
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        present(alert, animated: true, completion: nil)
     }
 }
