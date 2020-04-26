@@ -29,7 +29,7 @@ class AppCoordinator: Coordinatable {
             navigationController.viewControllers = [viewController]
             viewController.coordinator = self
             rootViewController = navigationController
-            window.rootViewController = viewController
+            window.rootViewController = navigationController
         }
     }
 }
