@@ -17,9 +17,11 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HIr-n7-VP5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <gestureRecognizers/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="HIr-n7-VP5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Asf-lt-SgH"/>
                             <constraint firstItem="HIr-n7-VP5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bBj-9b-CEh"/>
@@ -44,6 +46,7 @@
                     <tabBarItem key="tabBarItem" title="" image="mappin.and.ellipse" catalog="system" landscapeImage="mappin.and.ellipse" selectedImage="mappin.and.ellipse" id="EJt-lO-VzI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aLD-uU-VFy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

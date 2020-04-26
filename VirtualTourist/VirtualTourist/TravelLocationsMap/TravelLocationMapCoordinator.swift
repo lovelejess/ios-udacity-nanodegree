@@ -13,6 +13,7 @@ protocol Coordinatable: class {
     var rootViewController: UIViewController? { get set }
     var childControllers: [UIViewController]? { get set }
     var parentCoordinator: Coordinatable? { get set }
+    var userPreferences: UserPreferences! { get set }
     func navigate(to route: Route)
 }
 
@@ -25,6 +26,7 @@ class TravelLocationMapCoordinator: Coordinatable {
     var rootViewController: UIViewController?
     var childControllers: [UIViewController]?
     var parentCoordinator: Coordinatable?
+    var userPreferences: UserPreferences!
     
     func navigate(to route: Route) {
         

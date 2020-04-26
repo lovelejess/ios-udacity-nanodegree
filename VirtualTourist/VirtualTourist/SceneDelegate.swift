@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appCoordinator: Coordinatable?
+    var appCoordinator: Coordinatable!
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -25,7 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             /// `appCoordinator` is instantiated to handle app navigation through use of more coordinators
             appCoordinator = AppCoordinator(window: window)
-            appCoordinator?.navigate(to: .travelLocationsMap)
+            appCoordinator.userPreferences = UserPreferences()
+            appCoordinator.navigate(to: .travelLocationsMap)
 
             self.window = window
             window.makeKeyAndVisible()
@@ -63,7 +64,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
 
 }
 

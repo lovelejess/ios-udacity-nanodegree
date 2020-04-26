@@ -15,6 +15,7 @@ class AppCoordinator: Coordinatable {
     var rootViewController: UIViewController?
     var childControllers: [UIViewController]?
     var parentCoordinator: Coordinatable?
+    var userPreferences: UserPreferences!
 
     init(window: UIWindow) {
         self.window = window
@@ -27,7 +28,7 @@ class AppCoordinator: Coordinatable {
             let navigationController = storyboard.viewController(for: .travelLocationMapNavigation) as UINavigationController
             let viewController = storyboard.viewController(for: .travelLocationMapViewController) as TravelLocationMapViewController
             navigationController.viewControllers = [viewController]
-            viewController.coordinator = self
+            viewController.viewModel = TravelLocationsViewModel(coordinator: self, userPreferences: userPreferences)
             rootViewController = navigationController
             window.rootViewController = navigationController
         }

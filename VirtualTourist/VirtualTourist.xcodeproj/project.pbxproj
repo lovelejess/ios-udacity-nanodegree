@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0CEABE24553A96009DBE6B /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CEABD24553A96009DBE6B /* UserPreferences.swift */; };
+		2E0CEAC024554951009DBE6B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CEABF24554951009DBE6B /* Location.swift */; };
 		2E37D7902453DD280043C122 /* StoryboardConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D78F2453DD280043C122 /* StoryboardConvenience.swift */; };
 		2E37D7942453DE560043C122 /* TravelLocationMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D7932453DE560043C122 /* TravelLocationMapCoordinator.swift */; };
 		2E37D7962453DFB50043C122 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37D7952453DFB50043C122 /* AppCoordinator.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0CEABD24553A96009DBE6B /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		2E0CEABF24554951009DBE6B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2E37D78F2453DD280043C122 /* StoryboardConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardConvenience.swift; sourceTree = "<group>"; };
 		2E37D7932453DE560043C122 /* TravelLocationMapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelLocationMapCoordinator.swift; sourceTree = "<group>"; };
 		2E37D7952453DFB50043C122 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			children = (
 				2E52D952244FEA080044243D /* TravelLocationMapViewController.swift */,
 				2E37D7932453DE560043C122 /* TravelLocationMapCoordinator.swift */,
+				2E0CEABF24554951009DBE6B /* Location.swift */,
 			);
 			path = TravelLocationsMap;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				2E37D7912453DE020043C122 /* UI */,
 				2E52D957244FEA080044243D /* VirtualTourist.xcdatamodeld */,
 				2E37D7952453DFB50043C122 /* AppCoordinator.swift */,
+				2E0CEABD24553A96009DBE6B /* UserPreferences.swift */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -288,8 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E52D959244FEA080044243D /* VirtualTourist.xcdatamodeld in Sources */,
+				2E0CEABE24553A96009DBE6B /* UserPreferences.swift in Sources */,
 				2E52D953244FEA080044243D /* TravelLocationMapViewController.swift in Sources */,
 				2E52D94F244FEA080044243D /* AppDelegate.swift in Sources */,
+				2E0CEAC024554951009DBE6B /* Location.swift in Sources */,
 				2E52D951244FEA080044243D /* SceneDelegate.swift in Sources */,
 				2E37D7942453DE560043C122 /* TravelLocationMapCoordinator.swift in Sources */,
 				2E37D7902453DD280043C122 /* StoryboardConvenience.swift in Sources */,
