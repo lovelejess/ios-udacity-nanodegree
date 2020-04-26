@@ -13,25 +13,17 @@ import CoreLocation
 class TravelLocationMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    var locationManager: CLLocationManager!
-    var viewModel: TravelLocationsViewModel!
+    var viewModel: TravelLocationViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = .zero
-        locationManager.desiredAccuracy = .greatestFiniteMagnitude
-        locationManager.startUpdatingLocation()
+        viewModel.delegate = self
         mapView.showsUserLocation = true
         mapView.delegate = self
         title = "Travel Locations Map"
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapMap(gestureRecognizer:)))
         self.view.addGestureRecognizer(gestureRecognizer)
-
-        loadMap()
     }
 
     @objc func didTapMap(gestureRecognizer : UITapGestureRecognizer ) {
@@ -41,20 +33,6 @@ class TravelLocationMapViewController: UIViewController {
         let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         setDroppedPin(for: locationCoordinate)
-    }
-
-    func loadMap() {
-        guard let userLocation: Location = viewModel.getLocation() ?? getCurrentUserLocation() else { return }
-        let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
-        centerMapOnLocation(location: location)
-        setRegion(location: location)
-    }
-
-    func getCurrentUserLocation() -> Location? {
-        guard let userLocation = locationManager.location?.coordinate else {
-            return nil
-        }
-        return Location(latitude: userLocation.latitude, longitude: userLocation.longitude)
     }
     
     private func centerMapOnLocation(location: CLLocation) {
@@ -76,53 +54,21 @@ class TravelLocationMapViewController: UIViewController {
     }
 }
 
-
-extension TravelLocationMapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            loadMap()
-        }
+// MARK: TravelLocationsMapDelegate
+extension TravelLocationMapViewController: TravelLocationsMapDelegate {
+    func loadMap(for location: CLLocation) {
+        centerMapOnLocation(location: location)
+        setRegion(location: location)
     }
 }
+
+
 // MARK: MKMapViewDelegate
 extension TravelLocationMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
         if let location = view.annotation?.coordinate {
-            print("Location: \(location)")
             viewModel.setLocation(for: location)
         }
-//        if let annotationTitle = view.annotation?.subtitle as? String
-//        {
-//            guard let url = URL(string: annotationTitle) else { return }
-//
-//            if UIApplication.shared.canOpenURL(url) {
-//                let safariViewController = SFSafariViewController(url: url)
-//                present(safariViewController, animated: true)
-//            } else {
-//                let alert = UIAlertController(title: "Error!", message: "Invalid URL provided", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                present(alert, animated: true)
-//            }
-//        }
-    }
-}
-
-class TravelLocationsViewModel {
-
-    var userPreferences: UserPreferences!
-    var coordinator: Coordinatable!
-    
-    init(coordinator: Coordinatable, userPreferences: UserPreferences = UserPreferences()) {
-        self.coordinator = coordinator
-        self.userPreferences = userPreferences
-    }
-    
-    func setLocation(for newLocation: CLLocationCoordinate2D) {
-        userPreferences.location = Location(latitude: newLocation.latitude, longitude: newLocation.longitude)
-    }
-    
-    func getLocation() -> Location? {
-        return userPreferences.location
     }
 }

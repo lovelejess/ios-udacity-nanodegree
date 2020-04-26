@@ -21,6 +21,7 @@
 		2E52D95E244FEA0C0044243D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E52D95C244FEA0C0044243D /* LaunchScreen.storyboard */; };
 		2E52D969244FEA0C0044243D /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D968244FEA0C0044243D /* VirtualTouristTests.swift */; };
 		2E52D974244FEA0C0044243D /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D973244FEA0C0044243D /* VirtualTouristUITests.swift */; };
+		2EF92C452455E880002B2E7F /* TravelLocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF92C442455E880002B2E7F /* TravelLocationMapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2E52D96F244FEA0C0044243D /* VirtualTouristUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualTouristUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E52D973244FEA0C0044243D /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		2E52D975244FEA0C0044243D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EF92C442455E880002B2E7F /* TravelLocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelLocationMapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				2E52D952244FEA080044243D /* TravelLocationMapViewController.swift */,
 				2E37D7932453DE560043C122 /* TravelLocationMapCoordinator.swift */,
 				2E0CEABF24554951009DBE6B /* Location.swift */,
+				2EF92C442455E880002B2E7F /* TravelLocationMapViewModel.swift */,
 			);
 			path = TravelLocationsMap;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF92C452455E880002B2E7F /* TravelLocationMapViewModel.swift in Sources */,
 				2E52D959244FEA080044243D /* VirtualTourist.xcdatamodeld in Sources */,
 				2E0CEABE24553A96009DBE6B /* UserPreferences.swift in Sources */,
 				2E52D953244FEA080044243D /* TravelLocationMapViewController.swift in Sources */,

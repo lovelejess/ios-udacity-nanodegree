@@ -28,7 +28,7 @@ class AppCoordinator: Coordinatable {
             let navigationController = storyboard.viewController(for: .travelLocationMapNavigation) as UINavigationController
             let viewController = storyboard.viewController(for: .travelLocationMapViewController) as TravelLocationMapViewController
             navigationController.viewControllers = [viewController]
-            viewController.viewModel = TravelLocationsViewModel(coordinator: self, userPreferences: userPreferences)
+            viewController.viewModel = TravelLocationViewModel(coordinator: self, userPreferences: userPreferences)
             rootViewController = navigationController
             window.rootViewController = navigationController
         }
