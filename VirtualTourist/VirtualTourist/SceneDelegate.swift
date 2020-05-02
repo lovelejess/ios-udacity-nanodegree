@@ -9,7 +9,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    var dataController: DataController!
     var window: UIWindow?
     var appCoordinator: Coordinatable!
 
@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             /// `appCoordinator` is instantiated to handle app navigation through use of more coordinators
-            appCoordinator = AppCoordinator(window: window)
-            appCoordinator.userPreferences = UserPreferences()
+            dataController = DataController(modelName: "VirtualTourist")
+            appCoordinator = AppCoordinator(window: window, userPreferences: UserPreferences(), dataController: dataController)
             appCoordinator.navigate(to: .travelLocationsMap)
 
             self.window = window

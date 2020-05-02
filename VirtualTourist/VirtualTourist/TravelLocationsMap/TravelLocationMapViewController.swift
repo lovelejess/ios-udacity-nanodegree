@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreData
 
 class TravelLocationMapViewController: UIViewController {
 
@@ -24,6 +25,19 @@ class TravelLocationMapViewController: UIViewController {
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapMap(gestureRecognizer:)))
         self.view.addGestureRecognizer(gestureRecognizer)
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.createFetchResultsController()
+        loadPins()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        viewModel.fetchResultsController = nil
     }
 
     @objc func didTapMap(gestureRecognizer : UITapGestureRecognizer ) {
@@ -33,6 +47,8 @@ class TravelLocationMapViewController: UIViewController {
         let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
         setDroppedPin(for: locationCoordinate)
+        let location = Location(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude)
+        viewModel.addDroppedPin(for: location)
     }
     
     private func centerMapOnLocation(location: CLLocation) {
@@ -51,6 +67,15 @@ class TravelLocationMapViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
+    }
+
+    private func loadPins() {
+        let pins = viewModel.loadDroppedPins()
+
+        for pin in pins {
+            let location = CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude)
+            setDroppedPin(for: location)
+        }
     }
 }
 

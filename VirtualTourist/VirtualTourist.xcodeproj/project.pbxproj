@@ -22,6 +22,7 @@
 		2E52D969244FEA0C0044243D /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D968244FEA0C0044243D /* VirtualTouristTests.swift */; };
 		2E52D974244FEA0C0044243D /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52D973244FEA0C0044243D /* VirtualTouristUITests.swift */; };
 		2EF92C452455E880002B2E7F /* TravelLocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF92C442455E880002B2E7F /* TravelLocationMapViewModel.swift */; };
+		2EF92C4724561F1D002B2E7F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF92C4624561F1C002B2E7F /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		2E52D973244FEA0C0044243D /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		2E52D975244FEA0C0044243D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EF92C442455E880002B2E7F /* TravelLocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelLocationMapViewModel.swift; sourceTree = "<group>"; };
+		2EF92C4624561F1C002B2E7F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				2E52D957244FEA080044243D /* VirtualTourist.xcdatamodeld */,
 				2E37D7952453DFB50043C122 /* AppCoordinator.swift */,
 				2E0CEABD24553A96009DBE6B /* UserPreferences.swift */,
+				2EF92C4624561F1C002B2E7F /* DataController.swift */,
 			);
 			path = VirtualTourist;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				2E0CEABE24553A96009DBE6B /* UserPreferences.swift in Sources */,
 				2E52D953244FEA080044243D /* TravelLocationMapViewController.swift in Sources */,
 				2E52D94F244FEA080044243D /* AppDelegate.swift in Sources */,
+				2EF92C4724561F1D002B2E7F /* DataController.swift in Sources */,
 				2E0CEAC024554951009DBE6B /* Location.swift in Sources */,
 				2E52D951244FEA080044243D /* SceneDelegate.swift in Sources */,
 				2E37D7942453DE560043C122 /* TravelLocationMapCoordinator.swift in Sources */,
