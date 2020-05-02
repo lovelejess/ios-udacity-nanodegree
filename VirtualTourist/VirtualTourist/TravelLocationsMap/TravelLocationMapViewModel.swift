@@ -98,9 +98,12 @@ class TravelLocationViewModel: NSObject {
 extension TravelLocationViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse || status == .authorizedAlways {
+
             guard let userLocation: Location = getLocation() ?? getCurrentUserLocation() else { return }
             let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
             delegate?.loadMap(for: location)
+        } else {
+            locationManager.requestWhenInUseAuthorization()
         }
     }
 }

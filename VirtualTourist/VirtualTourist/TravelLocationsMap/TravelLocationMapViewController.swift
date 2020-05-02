@@ -31,6 +31,9 @@ class TravelLocationMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.createFetchResultsController()
+        guard let userLocation: Location = viewModel.getLocation() ?? viewModel.getCurrentUserLocation() else { return }
+        let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        loadMap(for: location)
         loadPins()
     }
 

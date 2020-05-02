@@ -45,6 +45,7 @@ class UserPreferences {
     }
 }
 
-enum UserPreferenceKeys: String {
+enum UserPreferenceKeys: String  {
     case location
+    case locationAccess
 }
