@@ -30,6 +30,7 @@ class TravelLocationViewModel: NSObject {
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
+
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = .zero
         locationManager.desiredAccuracy = .greatestFiniteMagnitude
@@ -114,3 +115,4 @@ protocol TravelLocationsMapDelegate: class {
 
 extension TravelLocationViewModel: NSFetchedResultsControllerDelegate {
 }
+

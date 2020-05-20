@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 protocol Coordinatable: class {
-    var rootViewController: UIViewController? { get set }
+    var rootViewController: UIViewController! { get }
     var childControllers: [UIViewController]? { get set }
     var parentCoordinator: Coordinatable? { get set }
     var userPreferences: UserPreferences! { get set }
@@ -19,18 +20,6 @@ protocol Coordinatable: class {
 
 enum Route {
     case travelLocationsMap
+    case photoAlbum(location: CLLocationCoordinate2D)
 }
 
-class TravelLocationMapCoordinator: Coordinatable {
-
-    var rootViewController: UIViewController?
-    var childControllers: [UIViewController]?
-    var parentCoordinator: Coordinatable?
-    var userPreferences: UserPreferences!
-    
-    func navigate(to route: Route) {
-        
-    }
-    
-    
-}

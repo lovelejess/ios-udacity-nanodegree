@@ -97,6 +97,7 @@ extension TravelLocationMapViewController: MKMapViewDelegate {
     {
         if let location = view.annotation?.coordinate {
             viewModel.setLocation(for: location)
+            viewModel.coordinator.navigate(to: .photoAlbum(location: location))
         }
     }
 }

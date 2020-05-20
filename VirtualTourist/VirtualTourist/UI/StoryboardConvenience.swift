@@ -12,12 +12,14 @@ import UIKit
 // MARK: StoryboardNames enum
 enum StoryboardNames: String {
     case travelLocationsMap = "TravelLocationsMap"
+    case photoAlbum = "PhotoAlbum"
 }
 
 // MARK: ViewControllerNames enum
 enum ViewControllerNames: String {
     case travelLocationMapNavigation = "TravelLocationMapNavigation"
     case travelLocationMapViewController = "TravelLocationMapViewController"
+    case photoAlbumViewController = "PhotoAlbumViewController"
 }
 
 // MARK: StoryboardIdentifiable protocol
