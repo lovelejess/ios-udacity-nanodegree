@@ -36,7 +36,9 @@ class AppCoordinator: Coordinatable {
         case .photoAlbum:
             if rootViewController.children.first(where: { $0 is TravelLocationMapViewController}) != nil {
                 let viewController = PhotoAlbumViewController.init()
-                viewController.viewModel = PhotoAlbumViewModel(coordinator: self, userPreferences: userPreferences, dataController: dataController)
+                let networkService = NetworkService(urlSession: URLSession.shared)
+                let dataFetcher = FlickrFetcher(networkService: networkService)
+                viewController.viewModel = PhotoAlbumViewModel(coordinator: self, userPreferences: userPreferences, dataController: dataController, dataFetcher: dataFetcher)
                 rootViewController.present(viewController, animated: true, completion: nil)
             }
             

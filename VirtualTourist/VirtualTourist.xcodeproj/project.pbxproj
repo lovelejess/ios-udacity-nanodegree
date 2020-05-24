@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163190A4247AE7D4004A736B /* FlickrResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163190A3247AE7D4004A736B /* FlickrResponse.swift */; };
 		2E0CEABE24553A96009DBE6B /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CEABD24553A96009DBE6B /* UserPreferences.swift */; };
 		2E0CEAC024554951009DBE6B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CEABF24554951009DBE6B /* Location.swift */; };
 		2E2ED7CE24738B8B001CBFE3 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2ED7CD24738B8B001CBFE3 /* PhotoCollectionViewCell.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163190A3247AE7D4004A736B /* FlickrResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrResponse.swift; sourceTree = "<group>"; };
 		2E0CEABD24553A96009DBE6B /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		2E0CEABF24554951009DBE6B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2E2ED7CD24738B8B001CBFE3 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				2E6D7950245E1AD300854375 /* FlickrFetcher.swift */,
+				163190A3247AE7D4004A736B /* FlickrResponse.swift */,
 			);
 			path = Flickr;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				2E6D795F245E837C00854375 /* CollectionViewConvenience.swift in Sources */,
 				2EF92C4724561F1D002B2E7F /* DataController.swift in Sources */,
 				2E6D7951245E1AD300854375 /* FlickrFetcher.swift in Sources */,
+				163190A4247AE7D4004A736B /* FlickrResponse.swift in Sources */,
 				2E0CEAC024554951009DBE6B /* Location.swift in Sources */,
 				2E52D951244FEA080044243D /* SceneDelegate.swift in Sources */,
 				2E6D795D245E82E300854375 /* PhotoAlbumViewModel.swift in Sources */,

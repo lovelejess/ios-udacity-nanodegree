@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import Combine
+
 
 class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Int>
+
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Photo>
+    private var subscribers = Set<AnyCancellable>()
+
     var dataSource: DataSource! = nil
     var collectionView: UICollectionView! = nil
-    public var viewModel: PhotoAlbumViewModel?
+    public var viewModel: PhotoAlbumViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureDataSource()
+        viewModel.getPhotos()
+
+        viewModel.$photos.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { photos in
+                print("Response: \(photos)")
+                self.updatePhotos(photos: photos)
+                })
+            .store(in: &subscribers)
     }
 }
 
@@ -51,11 +64,11 @@ extension PhotoAlbumViewController {
 
     func configureDataSource() {
         dataSource = DataSource(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, photo: Int) -> UICollectionViewCell? in
+            (collectionView: UICollectionView, indexPath: IndexPath, photo: Photo) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Cells.photoCollectionViewCell.rawValue,
                 for: indexPath) as? PhotoCollectionViewCell else { fatalError("Could not create PhotoCollectionViewCell") }
-//            cell.configure()
+            cell.configure(photo: self.viewModel.photos[indexPath.row])
             return cell
         }
 
@@ -63,9 +76,9 @@ extension PhotoAlbumViewController {
     }
     
     private func setUpInitialData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0..<96))
+        snapshot.appendItems(viewModel.photos)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
@@ -76,6 +89,13 @@ extension PhotoAlbumViewController {
             snapshot.appendItems([photo])
         }
         return snapshot
+    }
+
+    func updatePhotos(photos: [Photo]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(photos)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 
 }
