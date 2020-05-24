@@ -24,4 +24,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = true
         backgroundColor = UIColor.blue
     }
+    
+    public func configure() {
+    }
 }

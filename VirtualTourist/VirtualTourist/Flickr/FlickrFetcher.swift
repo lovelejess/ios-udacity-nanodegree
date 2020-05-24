@@ -104,7 +104,7 @@ struct PhotosResponse: Codable {
     let photo: [Photo]
 }
 
-struct Photo: Codable {
+struct Photo: Codable, Hashable {
     let id: Double
     let title: String
 }

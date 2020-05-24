@@ -8,65 +8,78 @@
 
 import UIKit
 
-class PhotoAlbumViewController: UICollectionViewController {
-
+class PhotoAlbumViewController: UIViewController, UICollectionViewDelegate {
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Int>
+    var dataSource: DataSource! = nil
+    var collectionView: UICollectionView! = nil
     public var viewModel: PhotoAlbumViewModel?
-    private let space:CGFloat = 12.0
-    private let itemsPerRow: CGFloat = 3
-    private let sectionInsets = UIEdgeInsets(top: 12, left: 12, bottom: 8, right: 8)
-
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: Cells.photoCollectionViewCell.rawValue)
-
-        let paddingSpace = 12 * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        configureCollectionView()
+        configureDataSource()
     }
-
-   
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: Configuration
 extension PhotoAlbumViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func configureCollectionView() {
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        view.addSubview(collectionView)
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
+        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: Cells.photoCollectionViewCell.rawValue)
+        self.collectionView = collectionView
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalWidth(0.2))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.photoCollectionViewCell.rawValue, for: indexPath) as! PhotoCollectionViewCell
-        return cell
-        
+    func configureDataSource() {
+        dataSource = DataSource(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, photo: Int) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: Cells.photoCollectionViewCell.rawValue,
+                for: indexPath) as? PhotoCollectionViewCell else { fatalError("Could not create new cell") }
+//            cell.configure()
+            return cell
+        }
+
+        // initial data
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(Array(0..<94))
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let viewController = MemeMeDetailsViewController()
-//        viewController.memeImageView.image = memes[indexPath.row].memedImage
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
+
+    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, Photo> {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
+        snapshot.appendSections([Section.main])
+        func addItems(_ photo: Photo) {
+            snapshot.appendItems([photo])
+        }
+        return snapshot
+    }
+
 }
-
-extension PhotoAlbumViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-}
-
 
 enum Cells: String {
     case photoCollectionViewCell
+}
 
+enum Section {
+  case main
 }

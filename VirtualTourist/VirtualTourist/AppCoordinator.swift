@@ -34,11 +34,9 @@ class AppCoordinator: Coordinatable {
             window.rootViewController = navigationController
             rootViewController = navigationController
         case .photoAlbum:
-            let storyboard = UIStoryboard.storyboard(storyboardName: .photoAlbum, bundle: Bundle(for: type(of: self)))
-            let viewController = storyboard.viewController(for: .photoAlbumViewController) as PhotoAlbumViewController
-            viewController.viewModel = PhotoAlbumViewModel(coordinator: self, userPreferences: userPreferences, dataController: dataController)
-
             if rootViewController.children.first(where: { $0 is TravelLocationMapViewController}) != nil {
+                let viewController = PhotoAlbumViewController.init()
+                viewController.viewModel = PhotoAlbumViewModel(coordinator: self, userPreferences: userPreferences, dataController: dataController)
                 rootViewController.present(viewController, animated: true, completion: nil)
             }
             
