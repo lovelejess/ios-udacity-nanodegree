@@ -40,10 +40,11 @@ extension PhotoAlbumViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .fractionalWidth(0.2))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+                                               heightDimension: .fractionalWidth(0.3))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -53,15 +54,18 @@ extension PhotoAlbumViewController {
             (collectionView: UICollectionView, indexPath: IndexPath, photo: Int) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: Cells.photoCollectionViewCell.rawValue,
-                for: indexPath) as? PhotoCollectionViewCell else { fatalError("Could not create new cell") }
+                for: indexPath) as? PhotoCollectionViewCell else { fatalError("Could not create PhotoCollectionViewCell") }
 //            cell.configure()
             return cell
         }
 
-        // initial data
+        setUpInitialData()
+    }
+    
+    private func setUpInitialData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0..<94))
+        snapshot.appendItems(Array(0..<96))
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
